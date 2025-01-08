@@ -1,0 +1,31 @@
+.loginlink {
+  border-radius: 30px;
+  padding: 15px 35px;
+  width: 119px;
+  height: 50px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.reglink {
+  border-radius: 30px;
+  padding: 15px 20px;
+  width: 149px;
+  height: 50px;
+  background: #fff4df;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+}

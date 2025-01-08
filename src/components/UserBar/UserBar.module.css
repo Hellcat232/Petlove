@@ -1,0 +1,18 @@
+.iconDiv {
+  width: 50px;
+  height: 50px;
+  background: #fff4df;
+  border-radius: 50%;
+  display: block;
+  align-content: center;
+  justify-items: center;
+}
+
+.userName {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}

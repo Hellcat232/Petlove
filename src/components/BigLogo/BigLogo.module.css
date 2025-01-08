@@ -1,0 +1,21 @@
+.big-logo-div {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.big-logo-div:hover {
+}
+
+.big-logo-img {
+}
+
+.big-logo-img:hover {
+  border-radius: 50px;
+  border-top: 1px solid #f6b83d;
+  border-bottom: 1px solid #f6b83d;
+  padding: 37px;
+  transition-duration: 400ms;
+  transition-delay: 100ms;
+}

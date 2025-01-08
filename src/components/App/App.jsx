@@ -22,7 +22,7 @@ const NotFoundPage = lazy(() =>
 function App() {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/home" element={<HomePage />} />
