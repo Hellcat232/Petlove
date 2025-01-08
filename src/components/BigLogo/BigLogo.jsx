@@ -7,8 +7,8 @@ const BigLogo = () => {
       <NavLink to="/login">
         <img
           src="/public/big-logo1x.png"
-          alt="Click here"
           srcSet="/public/big-logo1x.png 1x, /public/big-logo2x.png 2x"
+          alt="Click here"
           className={css["big-logo-img"]}
         />
       </NavLink>
