@@ -5,8 +5,8 @@ const Logo = () => {
     <>
       <NavLink to="/home">
         <img
-          src="/public/logo1x.png"
-          srcSet="/public/logo1x.png 1x, /public/logo2x.png 2x"
+          src="/logo1x.png"
+          srcSet="/logo1x.png 1x, /logo2x.png 2x"
           alt="logo"
         />
       </NavLink>

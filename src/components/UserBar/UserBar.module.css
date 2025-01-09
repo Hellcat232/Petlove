@@ -1,4 +1,16 @@
-.iconDiv {
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: #f6b83d;
+}
+
+.icon:hover {
+  transition-duration: 300ms;
+  transition-delay: 100ms;
+  fill: #fbc965;
+}
+
+.icon-div {
   width: 50px;
   height: 50px;
   background: #fff4df;
@@ -6,9 +18,16 @@
   display: block;
   align-content: center;
   justify-items: center;
+  cursor: pointer;
 }
 
-.userName {
+.icon-div:hover {
+  transition-duration: 300ms;
+  transition-delay: 100ms;
+  background: #fdeccd;
+}
+
+.user-name {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 20px;
@@ -18,9 +37,15 @@
 }
 
 @media (min-width: 320px) {
+  .user-name {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
+  .user-name {
+    display: block;
+  }
 }
 
 @media (min-width: 1280px) {

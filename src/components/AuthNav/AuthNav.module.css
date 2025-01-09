@@ -13,6 +13,14 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: #fff;
+    cursor: pointer;
+  }
+
+  .loginlink:hover {
+    transition-duration: 300ms;
+    transition-delay: 100ms;
+    background: #f9ca6c;
+    color: #fff;
   }
 
   .reglink {
@@ -28,6 +36,14 @@
     line-height: 129%;
     letter-spacing: -0.03em;
     text-transform: uppercase;
+    color: #f6b83d;
+    cursor: pointer;
+  }
+
+  .reglink:hover {
+    transition-duration: 300ms;
+    transition-delay: 100ms;
+    background: #ffe8be;
     color: #f6b83d;
   }
 }

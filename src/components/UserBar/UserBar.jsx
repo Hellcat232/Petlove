@@ -1,16 +1,19 @@
 import css from "./UserBar.module.css";
+import { useNavigate } from "react-router-dom";
 
 const UserBar = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className={css.iconDiv}>
-        <svg height="24" width="24" fill="#F6B83D">
-          <use href="/public/icons/symbol-defs.svg#icon-person-icon"></use>
+      <div className={css["icon-div"]} onClick={() => navigate("/profile")}>
+        <svg className={css.icon}>
+          <use href="/icons/symbol-defs.svg#icon-person-icon"></use>
         </svg>
       </div>
 
       <div className={css["display-name"]}>
-        <p className={css.userName}>Name</p>
+        <p className={css["user-name"]}>Name</p>
       </div>
     </>
   );

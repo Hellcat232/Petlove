@@ -8,24 +8,24 @@ const BigLogo = () => {
         <picture>
           <source
             media="(min-width:768px)"
-            srcSet="/public/big-logo-tablet1x.png 1x, /public/big-logo-tablet2x.png 2x"
+            srcSet="/big-logo-tablet1x.png 1x, /big-logo-tablet2x.png 2x"
           />
 
           <source
             media="(min-width:375px)"
-            srcSet="/public/big-logo-mob1x.png 1x, /public/big-logo-mob2x.png 2x"
+            srcSet="/big-logo-mob1x.png 1x, /big-logo-mob2x.png 2x"
           />
 
           <source
             media="(max-width:374px)"
-            srcSet="/public/big-logo-mob1x.png 1x, /public/big-logo-mob2x.png 2x"
+            srcSet="/big-logo-mob1x.png 1x, /big-logo-mob2x.png 2x"
           />
 
           <img
             className={css["big-logo-img"]}
-            src="/public/big-logo-tablet1x.png"
-            alt=""
-            srcSet="/public/big-logo-tablet1x.png 1x, /public/big-logo-tablet2x.png 2x"
+            src="/big-logo-tablet1x.png"
+            alt="Click here!"
+            srcSet="/big-logo-tablet1x.png 1x, /big-logo-tablet2x.png 2x"
           />
         </picture>
       </NavLink>

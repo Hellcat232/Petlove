@@ -13,3 +13,10 @@
   text-transform: uppercase;
   color: #fff;
 }
+
+.logoutBtn:hover {
+  transition-duration: 300ms;
+  transition-delay: 100ms;
+  background: #f9ca6c;
+  color: #fff;
+}

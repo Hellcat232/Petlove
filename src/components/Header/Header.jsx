@@ -3,12 +3,12 @@ import Logo from "../Logo/Logo";
 import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
 import UserNav from "../UserNav/UserNav";
-import BurgerModal from "../ModalTemplate/BurgerModal";
+import BurgerModal from "../BurgerModal/BurgerModal";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const Header = () => {
-  const [isLigged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery({ minWidth: 320 });
   const isTablet = useMediaQuery({ minWidth: 768 });
@@ -19,7 +19,7 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <header className={css.header}>
       <nav className="flex flex-row justify-between items-center">
         <div>
           <Logo />
@@ -32,8 +32,9 @@ const Header = () => {
             </div>
 
             <div className={css["burger-div-mob"]}>
+              {isLogged && <UserNav />}
               <svg className={css.burger} onClick={openModal}>
-                <use href="/public/icons/symbol-defs.svg#icon-menu-burger"></use>
+                <use href="/icons/symbol-defs.svg#icon-menu-burger"></use>
               </svg>
             </div>
           </>
@@ -42,11 +43,11 @@ const Header = () => {
         {isTablet && (
           <div className={css["for-tablet-bar-nav"]}>
             <div className={css["user-and-auth"]}>
-              {isLigged ? <UserNav /> : <AuthNav />}
+              {isLogged ? <UserNav /> : !modalIsOpen && <AuthNav />}
             </div>
             <div className={css["burger-div-tablet"]}>
               <svg className={css.burger} onClick={openModal}>
-                <use href="/public/icons/symbol-defs.svg#icon-menu-burger"></use>
+                <use href="/icons/symbol-defs.svg#icon-menu-burger"></use>
               </svg>
             </div>
           </div>
@@ -54,16 +55,19 @@ const Header = () => {
 
         {isDesktop && (
           <div className={css["user-and-auth"]}>
-            {isLigged ? <UserNav /> : <AuthNav />}
+            {isLogged ? <UserNav /> : <AuthNav />}
           </div>
         )}
       </nav>
 
-      <BurgerModal
-        modalIsOpen={modalIsOpen}
-        setIsOpen={setIsOpen}
-        isTablet={isTablet}
-      />
+      {!isDesktop && (
+        <BurgerModal
+          isLogged={isLogged}
+          modalIsOpen={modalIsOpen}
+          setIsOpen={setIsOpen}
+          isTablet={isTablet}
+        />
+      )}
     </header>
   );
 };

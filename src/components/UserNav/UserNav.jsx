@@ -1,5 +1,4 @@
 import css from "./UserNav.module.css";
-import { useMediaQuery } from "react-responsive";
 
 import UserBar from "../UserBar/UserBar";
 import LogOutBtn from "../LogOutBtn/LogOut";
@@ -7,8 +6,8 @@ import LogOutBtn from "../LogOutBtn/LogOut";
 const UserNav = () => {
   return (
     <>
-      <ul className="flex flex-row gap-2">
-        <li>
+      <ul className={css["user-nav"]}>
+        <li className={css["user-nav-logout-mob"]}>
           <LogOutBtn />
         </li>
 

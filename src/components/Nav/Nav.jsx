@@ -3,8 +3,6 @@ import getNavLinkClass from "../../utils/getNavLinkLight";
 import css from "./Nav.module.css";
 
 const Nav = ({ modalIsOpen }) => {
-  let chekLink = "news" | "notices" | "friends";
-
   return (
     <>
       <ul
@@ -14,7 +12,7 @@ const Nav = ({ modalIsOpen }) => {
             : "flex flex-row gap-[10px]"
         }
       >
-        <li className={css.news}>
+        <li>
           <NavLink
             to="/news"
             className={({ isActive }) =>
@@ -24,7 +22,7 @@ const Nav = ({ modalIsOpen }) => {
             News
           </NavLink>
         </li>
-        <li className={css.findpet}>
+        <li>
           <NavLink
             to="/notices"
             className={({ isActive }) =>
@@ -34,7 +32,7 @@ const Nav = ({ modalIsOpen }) => {
             Find pet
           </NavLink>
         </li>
-        <li className={css.friends}>
+        <li>
           <NavLink
             to="/friends"
             className={({ isActive }) =>

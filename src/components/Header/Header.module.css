@@ -1,8 +1,6 @@
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  padding-top: 18px;
+  /* border: 1px solid black; */
 }
 
 @media (max-width: 374px) {
@@ -18,12 +16,23 @@
     height: 32px;
     width: 32px;
     stroke: black;
+    cursor: pointer;
   }
 
   .burger:hover {
     stroke: #f6b83d;
     transition-duration: 300ms;
     transition-delay: 100ms;
+  }
+
+  .burger-div-mob {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .for-tablet-bar-nav {
+    display: none;
   }
 }
 
@@ -39,6 +48,7 @@
     height: 32px;
     width: 32px;
     stroke: black;
+    cursor: pointer;
   }
 
   .burger:hover {
@@ -46,12 +56,23 @@
     transition-duration: 300ms;
     transition-delay: 100ms;
   }
+
+  .burger-div-mob {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .for-tablet-bar-nav {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
-  /* .hidden-nav-div {
-    display: none;
-  } */
+  .header {
+    padding-top: 16px;
+    /* border: 1px solid black; */
+  }
 
   .user-and-auth {
     display: block;
@@ -73,6 +94,7 @@
   .for-tablet-bar-nav {
     display: flex;
     gap: 16px;
+    align-items: center;
   }
 }
 
