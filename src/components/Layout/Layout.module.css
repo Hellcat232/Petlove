@@ -5,7 +5,35 @@
   height: 100vh;
   z-index: -1;
   background-image: image-set(
-    url("/public/background-image1x.jpg") 1x,
-    url("/public/background-image2x.jpg") 2x
+    url("/public/background-image-mob1x.jpg") 1x,
+    url("/public/background-image-mob2x.jpg") 2x
   );
+}
+
+@media (min-width: 768px) {
+  .main-background {
+    background-position: center; /* Центрирование фона */
+    background-clip: border-box; /* Разрешите отображение по всей области */
+    background-size: cover; /* Масштабирование */
+    height: 100vh;
+    z-index: -1;
+    background-image: image-set(
+      url("/public/background-image-tablet1x.jpg") 1x,
+      url("/public/background-image-tablet2x.jpg") 2x
+    );
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-background {
+    background-position: center; /* Центрирование фона */
+    background-clip: border-box; /* Разрешите отображение по всей области */
+    background-size: cover; /* Масштабирование */
+    height: 100vh;
+    z-index: -1;
+    background-image: image-set(
+      url("/public/background-image1x.jpg") 1x,
+      url("/public/background-image2x.jpg") 2x
+    );
+  }
 }

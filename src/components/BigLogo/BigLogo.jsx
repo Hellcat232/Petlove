@@ -4,13 +4,30 @@ import { NavLink } from "react-router-dom";
 const BigLogo = () => {
   return (
     <div className={css["big-logo-div"]}>
-      <NavLink to="/login">
-        <img
-          src="/src/assets/big-logo1x.png"
-          srcSet="/public/big-logo1x.png 1x, /public/big-logo2x.png 2x"
-          alt="Click here"
-          className={css["big-logo-img"]}
-        />
+      <NavLink to="/home">
+        <picture>
+          <source
+            media="(min-width:768px)"
+            srcSet="/public/big-logo-tablet1x.png 1x, /public/big-logo-tablet2x.png 2x"
+          />
+
+          <source
+            media="(min-width:375px)"
+            srcSet="/public/big-logo-mob1x.png 1x, /public/big-logo-mob2x.png 2x"
+          />
+
+          <source
+            media="(max-width:374px)"
+            srcSet="/public/big-logo-mob1x.png 1x, /public/big-logo-mob2x.png 2x"
+          />
+
+          <img
+            className={css["big-logo-img"]}
+            src="/public/big-logo-tablet1x.png"
+            alt=""
+            srcSet="/public/big-logo-tablet1x.png 1x, /public/big-logo-tablet2x.png 2x"
+          />
+        </picture>
       </NavLink>
     </div>
   );

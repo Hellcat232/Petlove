@@ -9,7 +9,7 @@ const UserBar = () => {
         </svg>
       </div>
 
-      <div>
+      <div className={css["display-name"]}>
         <p className={css.userName}>Name</p>
       </div>
     </>

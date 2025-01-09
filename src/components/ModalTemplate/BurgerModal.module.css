@@ -1,0 +1,56 @@
+.burger-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: auto;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(50, 48, 48, 0.75);
+  width: 100vw;
+  height: 100vh;
+}
+
+.burger-modal-content {
+  position: absolute;
+  right: 0;
+  width: 218px;
+  height: 100vh;
+  background: #fff;
+  border: 1px solid black;
+  padding: 28px 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .div:first-child() {
+  display: flex;
+  align-items: flex-start;
+} */
+
+.burger-modal-content .div:first-child {
+  display: flex;
+  align-items: flex-start;
+}
+
+.close {
+  fill: #262626;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  cursor: pointer;
+}
+
+.close:hover {
+  fill: #f6b83d;
+  transition-duration: 300ms;
+  transition-delay: 100ms;
+}
+
+@media (min-width: 768px) {
+  .burger-modal-content {
+    width: 374px;
+  }
+}
