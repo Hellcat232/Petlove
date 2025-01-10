@@ -1,4 +1,10 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
 .main-background {
+  margin: -16px -35px;
   background-position: center; /* Центрирование фона */
   background-clip: border-box; /* Разрешите отображение по всей области */
   background-size: cover; /* Масштабирование */

@@ -23,6 +23,24 @@
     color: #fff;
   }
 
+  .loginlink-home {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    padding: 12px 66px;
+    width: 178px;
+    height: 42px;
+    background: #f6b83d;
+
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+  }
+
   .reglink {
     border-radius: 30px;
     padding: 12px 41px;
@@ -52,6 +70,16 @@
   .loginlink {
     padding: 15px 35px;
     width: 119px;
+    height: 50px;
+
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .loginlink-home {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 15px 35px;
+    width: 120px;
     height: 50px;
 
     font-size: 16px;

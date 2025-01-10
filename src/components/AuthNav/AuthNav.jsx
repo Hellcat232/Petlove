@@ -1,9 +1,10 @@
 import css from "./AuthNav.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const AuthNav = ({ modalIsOpen, isTablet }) => {
   const navigate = useNavigate();
+  const matchHome = useMatch("/home");
 
   return (
     <>
@@ -20,7 +21,7 @@ const AuthNav = ({ modalIsOpen, isTablet }) => {
           <button
             type="click"
             onClick={() => navigate("/login")}
-            className={css.loginlink}
+            className={matchHome ? css["loginlink-home"] : css.loginlink}
           >
             Log in
           </button>

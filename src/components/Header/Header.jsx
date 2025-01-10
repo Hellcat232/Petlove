@@ -6,8 +6,10 @@ import UserNav from "../UserNav/UserNav";
 import BurgerModal from "../BurgerModal/BurgerModal";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useMatch } from "react-router-dom";
 
 const Header = () => {
+  const matchHome = useMatch("/home");
   const [isLogged, setIsLogged] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery({ minWidth: 320 });
@@ -19,8 +21,8 @@ const Header = () => {
   }
 
   return (
-    <header className={css.header}>
-      <nav className="flex flex-row justify-between items-center">
+    <header className={matchHome ? css["header-home-path"] : css.header}>
+      <nav className={css["header-nav"]}>
         <div>
           <Logo />
         </div>
@@ -33,7 +35,10 @@ const Header = () => {
 
             <div className={css["burger-div-mob"]}>
               {isLogged && <UserNav />}
-              <svg className={css.burger} onClick={openModal}>
+              <svg
+                className={matchHome ? css["burger-home-page"] : css.burger}
+                onClick={openModal}
+              >
                 <use href="/icons/symbol-defs.svg#icon-menu-burger"></use>
               </svg>
             </div>
@@ -46,7 +51,10 @@ const Header = () => {
               {isLogged ? <UserNav /> : !modalIsOpen && <AuthNav />}
             </div>
             <div className={css["burger-div-tablet"]}>
-              <svg className={css.burger} onClick={openModal}>
+              <svg
+                className={matchHome ? css["burger-home-page"] : css.burger}
+                onClick={openModal}
+              >
                 <use href="/icons/symbol-defs.svg#icon-menu-burger"></use>
               </svg>
             </div>

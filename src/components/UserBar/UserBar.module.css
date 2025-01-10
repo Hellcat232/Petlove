@@ -10,9 +10,15 @@
   fill: #fbc965;
 }
 
+.icon-home {
+  width: 24px;
+  height: 24px;
+  fill: #f6b83d;
+}
+
 .icon-div {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: #fff4df;
   border-radius: 50%;
   display: block;
@@ -27,6 +33,17 @@
   background: #fdeccd;
 }
 
+.icon-div-home {
+  width: 40px;
+  height: 40px;
+  background: #f7f3eb;
+  border-radius: 50%;
+  display: block;
+  align-content: center;
+  justify-items: center;
+  cursor: pointer;
+}
+
 .user-name {
   font-family: var(--font-family);
   font-weight: 700;
@@ -36,8 +53,21 @@
   color: #262626;
 }
 
+.user-name-home {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
 @media (min-width: 320px) {
   .user-name {
+    display: none;
+  }
+
+  .user-name-home {
     display: none;
   }
 }
@@ -45,6 +75,20 @@
 @media (min-width: 768px) {
   .user-name {
     display: block;
+  }
+
+  .user-name-home {
+    display: block;
+  }
+
+  .icon-div {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-div-home {
+    width: 50px;
+    height: 50px;
   }
 }
 

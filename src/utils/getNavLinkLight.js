@@ -1,6 +1,7 @@
 import clsx from "clsx";
 
-const getNavLinkClass = (isActive, active, notActive) =>
-  clsx(isActive ? active : notActive);
+const getNavLinkClass = (isActive, active, notActive) => {
+  return clsx(isActive ? active : notActive);
+};
 
 export default getNavLinkClass;

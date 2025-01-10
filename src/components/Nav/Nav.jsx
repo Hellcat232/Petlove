@@ -1,22 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 import getNavLinkClass from "../../utils/getNavLinkLight";
 import css from "./Nav.module.css";
 
 const Nav = ({ modalIsOpen }) => {
+  const matchHome = useMatch("/home");
+
   return (
     <>
-      <ul
-        className={
-          modalIsOpen
-            ? "flex flex-col justify-center items-center gap-[35px] h-[165px] w-[130px]"
-            : "flex flex-row gap-[10px]"
-        }
-      >
+      <ul className={modalIsOpen ? css["nav-modal"] : css.nav}>
         <li>
           <NavLink
             to="/news"
-            className={({ isActive }) =>
-              getNavLinkClass(isActive, css.newsActive, css.newsNotActive)
+            className={
+              matchHome
+                ? modalIsOpen
+                  ? css["news-home-modal"]
+                  : css["news-home"]
+                : ({ isActive }) =>
+                    getNavLinkClass(isActive, css.newsActive, css.newsNotActive)
             }
           >
             News
@@ -25,8 +26,17 @@ const Nav = ({ modalIsOpen }) => {
         <li>
           <NavLink
             to="/notices"
-            className={({ isActive }) =>
-              getNavLinkClass(isActive, css.findpetActive, css.findpetNotActive)
+            className={
+              matchHome
+                ? modalIsOpen
+                  ? css["findpet-home-modal"]
+                  : css["findpet-home"]
+                : ({ isActive }) =>
+                    getNavLinkClass(
+                      isActive,
+                      css.findpetActive,
+                      css.findpetNotActive
+                    )
             }
           >
             Find pet
@@ -35,8 +45,17 @@ const Nav = ({ modalIsOpen }) => {
         <li>
           <NavLink
             to="/friends"
-            className={({ isActive }) =>
-              getNavLinkClass(isActive, css.friendsActive, css.friendsNotActive)
+            className={
+              matchHome
+                ? modalIsOpen
+                  ? css["friends-home-modal"]
+                  : css["friends-home"]
+                : ({ isActive }) =>
+                    getNavLinkClass(
+                      isActive,
+                      css.friendsActive,
+                      css.friendsNotActive
+                    )
             }
           >
             Our friends

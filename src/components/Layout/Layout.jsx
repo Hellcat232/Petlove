@@ -12,7 +12,7 @@ const Layout = () => {
     <>
       {matchMain ? null : <Header />}
       {/* <Loader /> */}
-      <main className={matchMain ? css["main-background"] : null}>
+      <main className={matchMain ? css["main-background"] : css.main}>
         {matchMain ? <BigLogo /> : <Outlet />}
       </main>
     </>

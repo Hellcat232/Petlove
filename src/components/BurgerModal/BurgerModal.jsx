@@ -46,7 +46,7 @@ const BurgerModal = ({ modalIsOpen, setIsOpen, isTablet, isLogged }) => {
 
         <div className="flex flex-col">
           {isLogged ? (
-            <LogOutBtn />
+            <LogOutBtn isLogged={isLogged} />
           ) : (
             <AuthNav modalIsOpen={modalIsOpen} isTablet={isTablet} />
           )}

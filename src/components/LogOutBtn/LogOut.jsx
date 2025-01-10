@@ -1,6 +1,6 @@
 import css from "./LogOut.module.css";
 
-const LogOutBtn = () => {
+const LogOutBtn = ({ isLogged }) => {
   return (
     <>
       <button type="submit" className={css.logoutBtn}>
