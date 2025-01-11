@@ -1,0 +1,112 @@
+@media (max-width: 374px) {
+  .register-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 20px 20px 20px;
+  }
+
+  .pet {
+    border-radius: 30px;
+    width: 280px;
+    height: 280px;
+  }
+
+  .register-div {
+    border-radius: 30px;
+    width: 280px;
+    height: 422px;
+    background: #fff;
+  }
+
+  .description {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #262626;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 375px) {
+  .register-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 20px 20px 20px;
+  }
+
+  .pet {
+    border-radius: 30px;
+    width: 335px;
+    height: 280px;
+  }
+
+  .register-div {
+    padding: 27px 20px 27px 20px;
+    border-radius: 30px;
+    width: 335px;
+    height: 422px;
+    background: #fff;
+  }
+
+  .description {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #262626;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .register-section {
+    gap: 16px;
+    margin: 32px 32px 32px 32px;
+  }
+
+  .pet {
+    border-radius: 60px;
+    width: 704px;
+    height: 302px;
+  }
+
+  .register-div {
+    padding: 30px 140px 30px 140px;
+    border-radius: 60px;
+    width: 704px;
+    height: 560px;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 122%;
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .register-section-desktop {
+    display: flex;
+    gap: 32px;
+    margin: 32px 32px 32px 32px;
+  }
+
+  .pet {
+    width: 592px;
+    height: 654px;
+  }
+
+  .register-div {
+    padding: 77px 84px 77px 84px;
+    width: 592px;
+    height: 654px;
+  }
+
+  .description {
+  }
+}

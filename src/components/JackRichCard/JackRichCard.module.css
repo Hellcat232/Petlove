@@ -1,0 +1,65 @@
+@media (max-width: 374px) {
+  .jack-rich {
+    display: none;
+  }
+}
+
+@media (min-width: 375px) {
+  .jack-rich {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .jack-rich {
+    padding: 16px 16px 18px 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    border-radius: 20px;
+    width: 294px;
+    height: 121px;
+    background: #fff;
+  }
+
+  .jack-rich-name {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.03em;
+    color: #f6b83d;
+  }
+
+  .span-data {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: #262626;
+  }
+
+  .about-jack-rich {
+    width: 194px;
+    height: 56px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.8);
+  }
+
+  .birthday {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+}
+
+@media (min-width: 1280px) {
+}

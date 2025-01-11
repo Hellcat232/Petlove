@@ -1,0 +1,93 @@
+@media (max-width: 374px) {
+  .register-pet {
+    border-radius: 30px;
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+    height: 100%;
+
+    background-image: image-set(
+      url("/public/register-cat-mob1x.jpg") 1x,
+      url("/public/register-cat-mob2x.jpg") 2x
+    );
+  }
+
+  .login-pet {
+    border-radius: 30px;
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+    height: 100%;
+
+    background-image: image-set(
+      url("/public/login-dog-mob1x.jpg") 1x,
+      url("/public/login-dog-mob2x.jpg") 2x
+    );
+  }
+}
+
+@media (min-width: 375px) {
+  .register-pet {
+    border-radius: 30px;
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+    height: 100%;
+
+    background-image: image-set(
+      url("/public/register-cat-mob1x.jpg") 1x,
+      url("/public/register-cat-mob2x.jpg") 2x
+    );
+  }
+
+  .login-pet {
+    border-radius: 30px;
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+    height: 100%;
+
+    background-image: image-set(
+      url("/public/login-dog-mob1x.jpg") 1x,
+      url("/public/login-dog-mob2x.jpg") 2x
+    );
+  }
+}
+
+@media (min-width: 768px) {
+  .register-pet {
+    border-radius: 60px;
+    padding: 149px 378px 32px 32px;
+    background-image: image-set(
+      url("/public/register-cat-tablet1x.jpg") 1x,
+      url("/public/register-cat-tablet2x.jpg") 2x
+    );
+  }
+
+  .login-pet {
+    border-radius: 60px;
+    padding: 149px 378px 32px 32px;
+    background-image: image-set(
+      url("/public/login-dog-tablet1x.jpg") 1x,
+      url("/public/login-dog-tablet2x.jpg") 2x
+    );
+  }
+}
+
+@media (min-width: 1280px) {
+  .register-pet {
+    padding: 436px 237px 97px 61px;
+    background-image: image-set(
+      url("/public/register-cat-desktop1x.jpg") 1x,
+      url("/public/register-cat-desktop2x.jpg") 2x
+    );
+  }
+
+  .login-pet {
+    padding: 436px 237px 97px 61px;
+    background-image: image-set(
+      url("/public/login-dog-desktop1x.jpg") 1x,
+      url("/public/login-dog-desktop2x.jpg") 2x
+    );
+  }
+}
