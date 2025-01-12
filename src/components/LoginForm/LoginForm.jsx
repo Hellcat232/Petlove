@@ -1,58 +1,87 @@
 import css from "./LoginForm.module.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginSchemaValidation } from "../../utils/validationSchema";
-import { useFormStatus } from "react-dom";
+import { validation } from "../../utils/validation";
+import { useActionState, useState } from "react";
 
 const LoginForm = () => {
+  const [error, setError] = useState({});
   const dispatch = useDispatch();
-
-  const { pending } = useFormStatus();
-  const [data, setData] = useState({
-    email: "",
-    password: "",
+  const navigate = useNavigate();
+  const [state, formLoginAction, isPending] = useActionState(loginHandler, {
+    email: null,
+    password: null,
   });
 
-  const submitHandler = (e) => {
-    e.preventDefault(); // Отмена стандартного поведения формы
-    dispatch(login(data)); // Отправка данных из состояния
-  };
+  async function loginHandler(prevState, formData) {
+    const email = formData.get("email");
+    const password = formData.get("password");
 
-  const change = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    const { valid, errors } = await validation(loginSchemaValidation, {
+      email,
+      password,
+    });
+
+    if (!valid) {
+      console.log("Validation error", errors);
+      setError(errors);
+      return;
+    }
+
+    setError({});
+
+    const res = await dispatch(login({ email, password }));
+    if (res.meta.requestStatus === "fulfilled") {
+      navigate("/profile");
+
+      return res;
+    } else {
+      return console.log("No logged user");
+    }
+  }
 
   return (
     <>
-      <form onSubmit={submitHandler} className="flex flex-col gap-10">
-        <div className={css["inputs-box"]}>
+      <form action={formLoginAction} className={css.form}>
+        <div
+          className={
+            Object.keys(error).length > 0
+              ? css["inputs-box-error"]
+              : css["inputs-box"]
+          }
+        >
           <input
-            className={css["login-input"]}
+            className={
+              error.email ? css["login-input-error"] : css["login-input"]
+            }
             type="email"
             name="email"
-            value={data.email}
-            onChange={change}
             placeholder="Email"
           />
+          {error.email && <span className={css.error}>{error.email}</span>}
+
           <input
-            className={css["login-input"]}
+            className={
+              error.password ? css["login-input-error"] : css["login-input"]
+            }
             type="password"
             name="password"
-            value={data.password}
-            onChange={change}
             placeholder="Password"
           />
+          {error.password && (
+            <span className={css.error}>{error.password}</span>
+          )}
         </div>
 
         <div className={css["btn-box"]}>
-          <button type="submit" className={css["login-btn"]}>
-            Log in
+          <button
+            type="submit"
+            className={css["login-btn"]}
+            disabled={isPending}
+          >
+            {isPending ? "Loading..." : "Log in"}
           </button>
 
           <NavLink className={css.navlink} to="/register">

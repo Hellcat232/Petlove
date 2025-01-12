@@ -13,6 +13,7 @@
   }
 
   .register-div {
+    padding: 20px 20px 20px 20px;
     border-radius: 30px;
     width: 280px;
     height: 422px;
@@ -22,7 +23,7 @@
   .description {
     font-family: var(--font-family);
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 129%;
     letter-spacing: -0.02em;
     color: #262626;

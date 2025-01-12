@@ -2,72 +2,119 @@ import css from "./RegisterForm.module.css";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useActionState } from "react";
 import { registerSchemaValidation } from "../../utils/validationSchema";
+import { validation } from "../../utils/validation";
 
 const RegisterForm = () => {
+  const [error, setError] = useState({});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [state, formRegisterAction, isPending] = useActionState(
+    registerHandler,
+    { name: null, email: null, password: null, confirm: null }
+  );
 
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  console.log(error);
 
-  const submitHandler = (e) => {
-    e.preventDefault(); // Отмена стандартного поведения формы
-    dispatch(register(data)); // Отправка данных из состояния
-  };
+  async function registerHandler(prevState, formData) {
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirm = formData.get("confirm");
 
-  const change = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    const { valid, errors } = await validation(registerSchemaValidation, {
+      name,
+      email,
+      password,
+      confirm,
+    });
+
+    if (!valid) {
+      console.log("Validation error", errors);
+      setError(errors);
+      return;
+    }
+
+    if (confirm !== password) {
+      console.log("Password did't match");
+      setError({ password: "Password did't match" });
+      return;
+    }
+
+    setError({});
+
+    const res = await dispatch(register({ name, email, password }));
+    if (res.meta.requestStatus === "fulfilled") {
+      navigate("/profile");
+
+      return res;
+    } else {
+      return console.log("No register user");
+    }
+  }
 
   return (
     <>
-      <form onSubmit={submitHandler} className="flex flex-col gap-6">
-        <div className={css["inputs-box"]}>
+      <form action={formRegisterAction} className={css.form}>
+        <div
+          className={
+            Object.keys(error).length > 0
+              ? css["inputs-box-error"]
+              : css["inputs-box"]
+          }
+        >
           <input
-            className={css["register-input"]}
-            type="name"
+            className={
+              error.name ? css["register-input-error"] : css["register-input"]
+            }
+            type="text"
             name="name"
-            value={data.name}
-            onChange={change}
             placeholder="Name"
           />
+          {error.name && <span className={css.error}>{error.name}</span>}
+
           <input
-            className={css["register-input"]}
+            className={
+              error.email ? css["register-input-error"] : css["register-input"]
+            }
             type="email"
             name="email"
-            value={data.email}
-            onChange={change}
             placeholder="Email"
           />
+          {error.email && <span className={css.error}>{error.email}</span>}
+
           <input
-            className={css["register-input"]}
+            className={
+              error.password
+                ? css["register-input-error"]
+                : css["register-input"]
+            }
             type="password"
             name="password"
-            value={data.password}
-            onChange={change}
             placeholder="Password"
           />
+          {error.password && (
+            <span className={css.error}>{error.password}</span>
+          )}
+
           <input
-            className={css["register-input"]}
+            className={
+              error.confirm
+                ? css["register-input-error"]
+                : css["register-input"]
+            }
             type="password"
             name="confirm"
-            value={data.password}
-            onChange={change}
             placeholder="Confirm password"
           />
+          {error.confirm && <span className={css.error}>{error.confirm}</span>}
         </div>
 
         <div className={css["btn-box"]}>
-          <button className={css["reg-btn"]} type="submit">
-            Registration
+          <button className={css["reg-btn"]} type="submit" disabled={isPending}>
+            {isPending ? "Loading..." : "Registration"}
           </button>
 
           <NavLink className={css.navlink} to="/login">
