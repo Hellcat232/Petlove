@@ -5,6 +5,12 @@
     gap: 40px;
   }
 
+  .form-error {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   .inputs-box {
     display: flex;
     flex-direction: column;
@@ -16,7 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 5px;
   }
 
   .login-input {
@@ -103,6 +109,12 @@
     gap: 40px;
   }
 
+  .form-error {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   .inputs-box {
     display: flex;
     flex-direction: column;
@@ -113,7 +125,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
   }
 
   .login-input {
@@ -198,12 +210,16 @@
     gap: 64px;
   }
 
+  .form-error {
+    gap: 54px;
+  }
+
   .inputs-box {
     gap: 16px;
   }
 
   .inputs-box-error {
-    gap: 3px;
+    gap: 5px;
   }
 
   .login-input {
@@ -247,6 +263,9 @@
 
 @media (min-width: 1280px) {
   .form {
+  }
+
+  .form-error {
   }
 
   .inputs-box {

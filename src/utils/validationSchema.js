@@ -22,8 +22,8 @@ export const registerSchemaValidation = Yup.object().shape({
 
 export const loginSchemaValidation = Yup.object().shape({
   email: Yup.string()
-    .required("Email is required")
-    .matches(emailRegExp, "Invalid email format"),
+    .matches(emailRegExp, "Invalid email format")
+    .required("Email is required"),
 
   password: Yup.string()
     .required("Password is required")

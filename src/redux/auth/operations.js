@@ -1,13 +1,5 @@
-import axios from "axios";
+import axios from "../../api/api.js";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-const API_URL = import.meta.env.VITE_API_URL;
-if (!API_URL) {
-  console.log("React app is not defined");
-}
-// console.log(API_URL);
-
-axios.defaults.baseURL = API_URL;
 
 export const register = createAsyncThunk(
   "user/register",

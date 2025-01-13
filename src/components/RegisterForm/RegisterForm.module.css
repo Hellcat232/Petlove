@@ -5,6 +5,12 @@
     gap: 24px;
   }
 
+  .form-error {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .inputs-box {
     display: flex;
     flex-direction: column;
@@ -103,6 +109,12 @@
     gap: 24px;
   }
 
+  .form-error {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .inputs-box {
     display: flex;
     flex-direction: column;
@@ -199,6 +211,10 @@
     gap: 32px;
   }
 
+  .form-error {
+    gap: 20px;
+  }
+
   .inputs-box {
     gap: 16px;
   }
@@ -247,6 +263,10 @@
 
 @media (min-width: 1280px) {
   .form {
+  }
+
+  .form-error {
+    gap: 12px;
   }
 
   .inputs-box {

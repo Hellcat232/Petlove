@@ -44,7 +44,10 @@ const LoginForm = () => {
 
   return (
     <>
-      <form action={formLoginAction} className={css.form}>
+      <form
+        action={formLoginAction}
+        className={Object.keys(error).length > 0 ? css["form-error"] : css.form}
+      >
         <div
           className={
             Object.keys(error).length > 0

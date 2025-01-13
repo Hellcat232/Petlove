@@ -57,7 +57,10 @@ const RegisterForm = () => {
 
   return (
     <>
-      <form action={formRegisterAction} className={css.form}>
+      <form
+        action={formRegisterAction}
+        className={Object.keys(error).length > 0 ? css["form-error"] : css.form}
+      >
         <div
           className={
             Object.keys(error).length > 0
