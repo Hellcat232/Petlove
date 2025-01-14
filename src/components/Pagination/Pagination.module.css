@@ -20,10 +20,20 @@
     cursor: pointer;
   }
 
+  .double-left:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
+  }
+
   .single-left {
     width: 35px;
     height: 35px;
     cursor: pointer;
+  }
+
+  .single-left:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
   }
 
   .arrows-box-right {
@@ -38,10 +48,20 @@
     cursor: pointer;
   }
 
+  .single-right:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
+  }
+
   .double-right {
     width: 35px;
     height: 35px;
     cursor: pointer;
+  }
+
+  .double-right:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
   }
 
   .page-number {
@@ -110,10 +130,20 @@
     cursor: pointer;
   }
 
+  .double-left:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
+  }
+
   .single-left {
     width: 40px;
     height: 40px;
     cursor: pointer;
+  }
+
+  .single-left:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
   }
 
   .arrows-box-right {
@@ -128,10 +158,20 @@
     cursor: pointer;
   }
 
+  .single-right:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
+  }
+
   .double-right {
     width: 40px;
     height: 40px;
     cursor: pointer;
+  }
+
+  .double-right:hover {
+    border-radius: 100%;
+    border: 1px solid #f6b83d;
   }
 
   .page-number {
@@ -194,9 +234,15 @@
     height: 44px;
   }
 
+  .double-left:hover {
+  }
+
   .single-left {
     width: 44px;
     height: 44px;
+  }
+
+  .single-left:hover {
   }
 
   .arrows-box-right {
@@ -208,9 +254,15 @@
     height: 44px;
   }
 
+  .single-right:hover {
+  }
+
   .double-right {
     width: 44px;
     height: 44px;
+  }
+
+  .double-right:hover {
   }
 
   .page-number {

@@ -17,6 +17,10 @@
     color: rgba(38, 38, 38, 0.5);
   }
 
+  .search:hover {
+    border: 1px solid #f6b83d;
+  }
+
   .search-icon {
     position: absolute;
     left: 88%;
@@ -50,6 +54,11 @@
     letter-spacing: -0.03em;
     color: rgba(38, 38, 38, 0.5);
   }
+
+  .search:hover {
+    border: 1px solid #f6b83d;
+  }
+
   .search-icon {
     position: absolute;
     left: 90%;
