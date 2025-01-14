@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { getNews } from "./operation";
 
-const items = { page: null, perPage: null, totalPages: null, results: null };
+const items = {
+  pages: { page: null, perPage: null, totalPages: null },
+  results: [],
+  keyword: "",
+  loading: false,
+  error: null,
+};
 
 const newsSlice = createSlice({
   name: "news",
@@ -11,22 +17,25 @@ const newsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getNews.pending, (state, action) => {
-        state.page = null;
-        state.perPage = null;
-        state.totalPages = null;
-        state.results = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getNews.fulfilled, (state, action) => {
-        state.page = action.payload.page;
-        state.perPage = action.payload.perPage;
-        state.totalPages = action.payload.totalPages;
+        state.pages.page = action.payload.page;
+        state.pages.perPage = action.payload.perPage;
+        state.pages.totalPages = action.payload.totalPages;
         state.results = action.payload.results;
+        state.keyword = action.meta.arg.keyword || "pets";
+        state.loading = false;
+        state.error = null;
       })
       .addCase(getNews.rejected, (state, action) => {
-        state.page = null;
-        state.perPage = null;
-        state.totalPages = null;
-        state.results = null;
+        state.pages.page = null;
+        state.pages.perPage = null;
+        state.pages.totalPages = null;
+        state.results = [];
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

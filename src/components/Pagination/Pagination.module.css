@@ -1,5 +1,7 @@
 @media (max-width: 374px) {
   .pagination {
+    margin-top: 40px;
+    gap: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -13,13 +15,15 @@
   }
 
   .double-left {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
   }
 
   .single-left {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
   }
 
   .arrows-box-right {
@@ -29,18 +33,65 @@
   }
 
   .single-right {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
   }
 
   .double-right {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+  }
+
+  .page-number {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 1px solid lightgray;
+    cursor: pointer;
+
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    color: #262626;
+    transition: all 0.3s ease;
+  }
+
+  .page-number:hover {
+    background: #f6b83d;
+    color: #fff;
+  }
+
+  .page-number.active {
+    pointer-events: none;
+    cursor: default;
+    background: #f6b83d;
+    color: #fff;
+  }
+
+  .page-box {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .disabled {
+    visibility: hidden;
+  }
+
+  .disabled-double-arrows {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
 @media (min-width: 375px) {
   .pagination {
+    margin-top: 44px;
+    gap: 11px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -56,11 +107,13 @@
   .double-left {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   .single-left {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   .arrows-box-right {
@@ -72,16 +125,63 @@
   .single-right {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   .double-right {
     width: 40px;
     height: 40px;
+    cursor: pointer;
+  }
+
+  .page-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid lightgray;
+    cursor: pointer;
+
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    color: #262626;
+    transition: all 0.3s ease;
+  }
+
+  .page-number:hover {
+    background: #f6b83d;
+    color: #fff;
+  }
+
+  .page-number.active {
+    pointer-events: none;
+    cursor: default;
+    background: #f6b83d;
+    color: #fff;
+  }
+
+  .page-box {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .disabled {
+    visibility: hidden;
+  }
+
+  .disabled-double-arrows {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
 @media (min-width: 768px) {
   .pagination {
+    margin-top: 60px;
+    gap: 24px;
     width: 446px;
   }
 
@@ -112,6 +212,26 @@
     width: 44px;
     height: 44px;
   }
+
+  .page-number {
+    width: 44px;
+    height: 44px;
+
+    font-size: 18px;
+    line-height: 122%;
+  }
+
+  .page-number:hover {
+  }
+
+  .page-number.active {
+  }
+
+  .disabled {
+  }
+
+  .disabled-double-arrows {
+  }
 }
 
 @media (min-width: 1280px) {
@@ -134,5 +254,20 @@
   }
 
   .double-right {
+  }
+
+  .page-number {
+  }
+
+  .page-number:hover {
+  }
+
+  .page-number.active {
+  }
+
+  .disabled {
+  }
+
+  .disabled-double-arrows {
   }
 }

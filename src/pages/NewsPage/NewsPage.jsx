@@ -5,28 +5,55 @@ import NewsList from "../../components/NewsList/NewsList";
 import Pagination from "../../components/Pagination/Pagination";
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { getNews } from "../../redux/news/operation.js";
+import {
+  selectNewsPage,
+  selectNewsPerPage,
+  selectNewsTotalPages,
+  selectNewsKeyword,
+} from "../../redux/news/selectors.js";
 
 export default function NewsPage() {
   const dispatch = useDispatch();
+  const page = useSelector(selectNewsPage);
+  const perPage = useSelector(selectNewsPerPage);
+  const totalPages = useSelector(selectNewsTotalPages);
+  const keyword = useSelector(selectNewsKeyword);
 
   useEffect(() => {
-    dispatch(getNews());
+    dispatch(getNews({}));
   }, [dispatch]);
+
+  const handleSearch = (formData) => {
+    const searchData = formData.get("search");
+
+    if (!searchData.trim()) {
+      console.error("Search query is empty!");
+      return;
+    }
+
+    dispatch(getNews({ keyword: searchData.trim() }));
+  };
 
   return (
     <section className={css["news-section"]}>
       <div className={css["title-and-search"]}>
         <Title>News</Title>
-        <SearchField />
+        <SearchField handleSearch={handleSearch} />
       </div>
 
       <div className={css.list}>
         <NewsList />
       </div>
 
-      <Pagination />
+      <Pagination
+        page={page}
+        perPage={perPage}
+        totalPages={totalPages}
+        keyword={keyword}
+      />
     </section>
   );
 }

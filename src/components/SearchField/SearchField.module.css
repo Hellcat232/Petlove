@@ -16,6 +16,20 @@
     letter-spacing: -0.03em;
     color: rgba(38, 38, 38, 0.5);
   }
+
+  .search-icon {
+    position: absolute;
+    left: 88%;
+    top: 28%;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .search-icon:hover {
+    color: lightgray;
+    transition: color 0.3s ease;
+  }
 }
 
 @media (min-width: 375px) {
@@ -36,6 +50,19 @@
     letter-spacing: -0.03em;
     color: rgba(38, 38, 38, 0.5);
   }
+  .search-icon {
+    position: absolute;
+    left: 90%;
+    top: 32%;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .search-icon:hover {
+    color: lightgray;
+    transition: color 0.3s ease;
+  }
 }
 
 @media (min-width: 768px) {
@@ -49,7 +76,25 @@
     font-size: 16px;
     line-height: 125%;
   }
+
+  .search-icon {
+    left: 86%;
+  }
+
+  .search-icon:hover {
+  }
 }
 
 @media (min-width: 1280px) {
+  .search {
+  }
+
+  .search::placeholder {
+  }
+
+  .search-icon {
+  }
+
+  .search-icon:hover {
+  }
 }

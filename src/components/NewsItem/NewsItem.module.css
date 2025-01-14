@@ -2,8 +2,10 @@
   .news-item {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 18px;
     width: 280px;
+    height: 300px;
   }
 
   .news-img {
@@ -65,8 +67,11 @@
   .news-item {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
     width: 335px;
+
+    height: 360px;
   }
 
   .news-img {
@@ -128,6 +133,8 @@
   .news-item {
     gap: 28px;
     width: 340px;
+    justify-content: space-between;
+    height: 476px;
   }
 
   .news-img {
