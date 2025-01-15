@@ -2,13 +2,83 @@
   .item {
     border-radius: 15px;
     width: 280px;
-    height: 130px;
+    height: 160px;
     background: #fff;
+    padding: 12px 12px 30px 20px;
+  }
 
-    padding: 12px 12px 40px 20px;
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info {
+    display: flex;
+    gap: 12px;
+  }
+
+  .contacts-and-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 196px;
+  }
+
+  .email-address-phone-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .work-time {
+    border-radius: 30px;
+    padding: 8px;
+    height: 30px;
+    background: #fff4df;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 133%;
+    letter-spacing: -0.02em;
+    color: #f6b83d;
   }
 
   .logo-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 125%;
+    letter-spacing: -0.04em;
+    color: #262626;
+  }
+
+  .contacts-data {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 170px;
+  }
+
+  .contact-value {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #262626;
   }
 }
 
@@ -22,10 +92,32 @@
     padding: 12px 12px 40px 20px;
   }
 
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info {
+    display: flex;
+    gap: 14px;
+  }
+
+  .contacts-and-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 196px;
+  }
+
+  .email-address-phone-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .work-time {
     border-radius: 30px;
     padding: 8px;
-    width: 90px;
     height: 32px;
     background: #fff4df;
 
@@ -58,6 +150,11 @@
     line-height: 129%;
     letter-spacing: -0.02em;
     color: rgba(38, 38, 38, 0.5);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
   }
 
   .contact-value {

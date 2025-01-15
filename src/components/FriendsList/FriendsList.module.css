@@ -1,11 +1,35 @@
 @media (max-width: 374px) {
+  .friends-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 @media (min-width: 375px) {
+  .friends-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 @media (min-width: 768px) {
+  .friends-list {
+    margin-top: 44px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 704px;
+  }
 }
 
 @media (min-width: 1280px) {
+  .friends-list {
+    margin-top: 60px;
+    width: 1153px;
+    column-gap: 20px;
+    row-gap: 28px;
+  }
 }

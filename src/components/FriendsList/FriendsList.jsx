@@ -7,7 +7,7 @@ const FriendsList = () => {
   const isFriends = useSelector(selectFriendsItems);
 
   return (
-    <ul>
+    <ul className={css["friends-list"]}>
       {isFriends !== null &&
         isFriends.map((friend) => {
           return <FriendsItem key={friend._id} friend={friend} />;
