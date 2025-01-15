@@ -1,0 +1,23 @@
+@media (max-width: 374px) {
+  .our-friends-section {
+    margin: 54px 20px 80px 20px;
+  }
+}
+
+@media (min-width: 375px) {
+  .our-friends-section {
+    margin: 54px 20px 80px 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .our-friends-section {
+    margin: 85px 32px 80px 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .our-friends-section {
+    margin: 96px 64px 80px 64px;
+  }
+}

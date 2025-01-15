@@ -1,0 +1,84 @@
+@media (max-width: 374px) {
+  .item {
+    border-radius: 15px;
+    width: 280px;
+    height: 130px;
+    background: #fff;
+
+    padding: 12px 12px 40px 20px;
+  }
+
+  .logo-img {
+  }
+}
+
+@media (min-width: 375px) {
+  .item {
+    border-radius: 15px;
+    width: 335px;
+    height: 184px;
+    background: #fff;
+
+    padding: 12px 12px 40px 20px;
+  }
+
+  .work-time {
+    border-radius: 30px;
+    padding: 8px;
+    width: 90px;
+    height: 32px;
+    background: #fff4df;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+    letter-spacing: -0.02em;
+    color: #f6b83d;
+  }
+
+  .logo-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.04em;
+    color: #262626;
+  }
+
+  .contacts-data {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+
+  .contact-value {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #262626;
+  }
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: 342px;
+    height: 196px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .item {
+    width: 371px;
+  }
+}
