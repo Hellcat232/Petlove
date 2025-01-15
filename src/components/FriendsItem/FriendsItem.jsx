@@ -2,8 +2,6 @@ import css from "./FriendsItem.module.css";
 import workTime from "../../utils/workTime";
 
 const FriendsItem = ({ friend }) => {
-  console.log(friend);
-
   return (
     <li className={css.item}>
       <div className={css.content}>
@@ -12,7 +10,11 @@ const FriendsItem = ({ friend }) => {
         </div>
 
         <div className={css.info}>
-          <a href={friend.url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={friend.url || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={friend.imageUrl}
               alt="Company logo"

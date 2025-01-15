@@ -26,9 +26,7 @@ export default function NewsPage() {
     dispatch(getNews({}));
   }, [dispatch]);
 
-  const handleSearch = (formData) => {
-    const searchData = formData.get("search");
-
+  const handleSearch = (searchData) => {
     if (!searchData.trim()) {
       console.error("Search query is empty!");
       return;

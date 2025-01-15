@@ -34,6 +34,21 @@
     color: lightgray;
     transition: color 0.3s ease;
   }
+
+  .red-cross {
+    position: absolute;
+    left: 88%;
+    top: 28%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #ef2447;
+  }
+
+  .red-cross:hover {
+    color: lightgray;
+    transition: color 0.3s ease;
+  }
 }
 
 @media (min-width: 375px) {
@@ -72,6 +87,21 @@
     color: lightgray;
     transition: color 0.3s ease;
   }
+
+  .red-cross {
+    position: absolute;
+    left: 90%;
+    top: 32%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #ef2447;
+  }
+
+  .red-cross:hover {
+    color: lightgray;
+    transition: color 0.3s ease;
+  }
 }
 
 @media (min-width: 768px) {
@@ -92,6 +122,13 @@
 
   .search-icon:hover {
   }
+
+  .red-cross {
+    left: 86%;
+  }
+
+  .red-cross:hover {
+  }
 }
 
 @media (min-width: 1280px) {
@@ -105,5 +142,11 @@
   }
 
   .search-icon:hover {
+  }
+
+  .red-cross {
+  }
+
+  .red-cross:hover {
   }
 }
