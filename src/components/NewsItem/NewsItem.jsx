@@ -6,7 +6,12 @@ import dateFormatter from "../../utils/dateFormatter";
 const NewsItem = ({ itemNews }) => {
   return (
     <li className={css["news-item"]}>
-      <img src={itemNews.imgUrl} alt="News Image" className={css["news-img"]} />
+      <img
+        src={itemNews.imgUrl}
+        alt="News Image"
+        className={css["news-img"]}
+        loading="lazy"
+      />
 
       <div className={css["title-and-text-wrapper"]}>
         <h2 className={css["news-title"]}>{itemNews.title}</h2>

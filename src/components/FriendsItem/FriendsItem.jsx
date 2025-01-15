@@ -2,6 +2,8 @@ import css from "./FriendsItem.module.css";
 import workTime from "../../utils/workTime";
 
 const FriendsItem = ({ friend }) => {
+  console.log(friend);
+
   return (
     <li className={css.item}>
       <div className={css.content}>
@@ -15,6 +17,7 @@ const FriendsItem = ({ friend }) => {
               src={friend.imageUrl}
               alt="Company logo"
               className={css["logo-img"]}
+              loading="lazy"
             />
           </a>
 
@@ -23,26 +26,52 @@ const FriendsItem = ({ friend }) => {
             <div className={css["email-address-phone-container"]}>
               <p className={css["contacts-data"]}>
                 Email:{" "}
-                <span className={css["contact-value"]}>
-                  {friend.email || `${friend.title.toLowerCase()}@gmail.com`}
-                </span>
+                {friend.email ? (
+                  <a
+                    href={`mailto:${friend.email || undefined}`}
+                    className={css["contact-value"]}
+                    rel="noopener noreferrer"
+                  >
+                    {friend.email}
+                  </a>
+                ) : (
+                  <a
+                    href={`mailto:${friend.email || undefined}`}
+                    className={css["contact-value"]}
+                    rel="noopener noreferrer"
+                  >{`${friend.title.toLowerCase()}@gmail.com`}</a>
+                )}
               </p>
+
               <p className={css["contacts-data"]}>
                 Address:{" "}
-                <a
-                  className={css["contact-value"]}
-                  href={friend.addressUrl || null}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {friend.address || "website only"}
-                </a>
+                {friend.address ? (
+                  <a
+                    className={css["contact-value"]}
+                    href={friend.addressUrl || undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {friend.address}
+                  </a>
+                ) : (
+                  <span className={css.only}>website only</span>
+                )}
               </p>
+
               <p className={css["contacts-data"]}>
                 Phone:{" "}
-                <span className={css["contact-value"]}>
-                  {friend.phone || "email only"}
-                </span>
+                {friend.phone ? (
+                  <a
+                    href={friend.phone ? `tel:${friend.phone}` : undefined}
+                    className={css["contact-value"]}
+                    rel="noopener noreferrer"
+                  >
+                    {friend.phone}
+                  </a>
+                ) : (
+                  <span className={css.only}>email only</span>
+                )}
               </p>
             </div>
           </div>
