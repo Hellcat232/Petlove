@@ -73,8 +73,12 @@ export const noticesSpecies = createAsyncThunk(
 export const noticesById = createAsyncThunk(
   "notices/id",
   async (id, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+
     try {
-      const res = await axios.get(`/notices/${id}`);
+      const res = await axios.get(`/notices/${id}`, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
       console.log(res);
 
       return res.data;
@@ -87,8 +91,12 @@ export const noticesById = createAsyncThunk(
 export const noticesFavoriteAddById = createAsyncThunk(
   "notices/favorites/add",
   async (id, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+
     try {
-      const res = await axios.post(`/notices/favorites/add/${id}`);
+      const res = await axios.post(`/notices/favorites/add/${id}`, _, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
       console.log(res);
 
       return res.data;
@@ -101,8 +109,12 @@ export const noticesFavoriteAddById = createAsyncThunk(
 export const noticesFavoriteRemoveById = createAsyncThunk(
   "notices/favorites/remove",
   async (id, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+
     try {
-      const res = await axios.delete(`/notices/favorites/remove/${id}`);
+      const res = await axios.delete(`/notices/favorites/remove/${id}`, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
       console.log(res);
 
       return res.data;

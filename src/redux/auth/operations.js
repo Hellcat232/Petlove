@@ -45,21 +45,83 @@ export const currentUser = createAsyncThunk(
 );
 
 export const currentUserFullInfo = createAsyncThunk(
-  "user/current/full",
-  async (data, thunkAPI) => {
+  "user/fullinfo",
+  async (_, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+
     try {
+      const res = await axios.get("/users/current/full", {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
+      console.log(res);
+
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logout = createAsyncThunk(
-  "user/logout",
+export const editUsers = createAsyncThunk(
+  "user/edit",
   async (data, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+
     try {
+      const res = await axios.patch("/users/current/edit", data, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
+      console.log(res);
+
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+export const addPets = createAsyncThunk(
+  "user/add/pets",
+  async (data, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+
+    try {
+      const res = await axios.post("/users/current/pets/add", data, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
+      console.log(res);
+
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deletePets = createAsyncThunk(
+  "user/delete/pets",
+  async (id, thunkAPI) => {
+    const { auth } = thunkAPI.getState();
+    try {
+      const res = await axios.delete(`/users/current/pets/remove/${id}`, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
+      console.log(res);
+
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
+  const { auth } = thunkAPI.getState();
+  try {
+    await axios.post("/users/signout", _, {
+      headers: { Authorization: `Bearer ${auth.token}` },
+    });
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

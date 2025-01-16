@@ -87,7 +87,16 @@ const noticesSlice = createSlice({
         state.species = [];
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
+      .addCase(noticesById.pending, (state, action) => {})
+      .addCase(noticesById.fulfilled, (state, action) => {})
+      .addCase(noticesById.rejected, (state, action) => {})
+      .addCase(noticesFavoriteAddById.pending, (state, action) => {})
+      .addCase(noticesFavoriteAddById.fulfilled, (state, action) => {})
+      .addCase(noticesFavoriteAddById.rejected, (state, action) => {})
+      .addCase(noticesFavoriteRemoveById.pending, (state, action) => {})
+      .addCase(noticesFavoriteRemoveById.fulfilled, (state, action) => {})
+      .addCase(noticesFavoriteRemoveById.rejected, (state, action) => {});
   },
 });
 
