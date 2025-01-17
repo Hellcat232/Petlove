@@ -1,4 +1,4 @@
-export const selectNoticesResuls = (state) => state.notices.results;
+export const selectNotices = (state) => state.notices.results;
 
 export const selectNoticesPage = (state) => state.notices.pages.page;
 

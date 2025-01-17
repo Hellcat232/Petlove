@@ -15,6 +15,7 @@ import authReducer from "./auth/slice";
 import newsReducer from "./news/slice";
 import friendsReducer from "./friends/slice";
 import noticesReducer from "./notices/slice";
+import citiesReducer from "./cities/slice";
 
 const persistConfig = {
   key: "auth",
@@ -27,6 +28,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authReducer),
     news: newsReducer,
     friends: friendsReducer,
+    cities: citiesReducer,
     notices: noticesReducer,
   },
   middleware: (getDefaultMiddleware) =>

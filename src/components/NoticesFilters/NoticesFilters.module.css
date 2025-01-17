@@ -1,0 +1,71 @@
+@media (max-width: 374px) {
+}
+
+@media (min-width: 375px) {
+  .form {
+    padding: 20px 20px 20px 20px;
+    border-radius: 30px;
+    width: 335px;
+    height: 378px;
+    background: #fff4df;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .category-gender {
+    display: flex;
+    gap: 8px;
+  }
+
+  .select-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 12px 12px 12px 12px;
+    width: 295px;
+    height: 42px;
+    background: #fff;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.03em;
+    color: #262626;
+  }
+
+  .select-inputs-mob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 12px 12px 12px 12px;
+    width: 143px;
+    height: 42px;
+    background: #fff;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.03em;
+    color: #262626;
+  }
+
+  .hr {
+    background: rgba(38, 38, 38, 0.1);
+    margin: 20px 0 20px 0;
+    height: 0.5px;
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1280px) {
+}

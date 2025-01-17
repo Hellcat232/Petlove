@@ -5,16 +5,16 @@ export const notices = createAsyncThunk(
   "get/notices",
   async (data, thunkAPI) => {
     const queryParams = {
-      keyword: data.keyword,
-      category: data.category,
-      species: data.species,
+      keyword: data.keyword || "",
+      category: data.category || [],
+      species: data.species || [],
       locationId: data.locationId,
       byDate: data.byDate,
       byPrice: data.byPrice,
       byPopularity: data.byPopularity,
       page: data.page || 1,
       limit: data.limit || 6,
-      sex: data.sex,
+      sex: data.sex || [],
     };
 
     try {
@@ -47,7 +47,7 @@ export const noticesSex = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get("/notices/sex");
-      console.log(res);
+      // console.log(res);
 
       return res.data;
     } catch (error) {
@@ -61,7 +61,7 @@ export const noticesSpecies = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get("/notices/species");
-      console.log(res);
+      // console.log(res);
 
       return res.data;
     } catch (error) {

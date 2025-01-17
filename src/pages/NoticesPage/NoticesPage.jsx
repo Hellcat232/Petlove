@@ -18,16 +18,16 @@ export default function NoticesPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(noticesSpecies());
+    dispatch(notices());
   }, [dispatch]);
 
   return (
-    <section>
+    <section className={css["find-pet-section"]}>
       <Title>Find your favorite pet</Title>
 
       <NoticesFilters />
 
-      <NoticesList />
+      {/* <NoticesList /> */}
 
       <Pagination />
     </section>
