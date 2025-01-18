@@ -1,6 +1,7 @@
 import css from "./NoticesFilters.module.css";
 import Select from "react-select";
 import { IoClose } from "react-icons/io5";
+import { IoMdCheckmark } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import SearchField from "../SearchField/SearchField";
@@ -19,23 +20,27 @@ import {
 } from "../../redux/notices/selectors";
 import { selectCityCities } from "../../redux/cities/selectors";
 
+const defaultState = {
+  category: "",
+  gender: "",
+  types: "",
+  locations: "",
+  popular: false,
+  unpopular: false,
+  cheap: false,
+  expensive: false,
+};
+
 const NoticesFilters = () => {
   const dispatch = useDispatch();
   const allCategory = useSelector(selectNoticesCategories);
   const allGenders = useSelector(selectNoticesSex);
   const allTypes = useSelector(selectNoticesSpecies);
-  const [formData, setFormData] = useState({
-    category: "",
-    gender: "",
-    types: "",
-    locations: "",
-    popular: false,
-    unpopular: false,
-    cheap: false,
-    expensive: false,
-  });
+  const [formData, setFormData] = useState(defaultState);
 
-  // console.log(formData);
+  const hasChanged = !Object.values(formData).every(
+    (value, idx) => value === Object.values(defaultState)[idx]
+  );
 
   useEffect(() => {
     const actions = [noticesCategories(), noticesSex(), noticesSpecies()];
@@ -212,9 +217,31 @@ const NoticesFilters = () => {
         </label>
       </div>
 
-      <hr className="mb-5 mt-5 " />
+      {hasChanged && (
+        <div>
+          <hr className={css.hr} />
 
-      <button type="submit">submit</button>
+          <div className={css["apply-reset"]}>
+            <button type="submit" className={css["apply-btn"]}>
+              Apply{" "}
+              <span>
+                <IoMdCheckmark className={css["green-check"]} />
+              </span>
+            </button>
+
+            <button
+              type="button"
+              className={css["apply-btn"]}
+              onClick={() => setFormData(defaultState)}
+            >
+              Reset{" "}
+              <span>
+                <IoClose className={css["red-cross"]} />
+              </span>
+            </button>
+          </div>
+        </div>
+      )}
     </form>
   );
 };
