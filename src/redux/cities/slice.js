@@ -19,7 +19,6 @@ const citiesSlice = createSlice({
         state.loading = true;
       })
       .addCase(searchCities.fulfilled, (state, action) => {
-        // console.log(action);
         state.city = action.payload;
         state.error = null;
         state.loading = false;
@@ -33,7 +32,7 @@ const citiesSlice = createSlice({
         state.loading = true;
       })
       .addCase(getAllLocations.fulfilled, (state, action) => {
-        console.log(action);
+        // console.log(action);
 
         state.locations = action.payload;
         state.error = null;

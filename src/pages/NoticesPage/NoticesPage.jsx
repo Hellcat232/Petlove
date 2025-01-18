@@ -4,12 +4,9 @@ import Pagination from "../../components/Pagination/Pagination";
 import NoticesList from "../../components/NoticesList/NoticesList";
 import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
 
-import {
-  notices,
-  noticesCategories,
-  noticesSex,
-  noticesSpecies,
-} from "../../redux/notices/operation";
+import NoticesFilters2 from "../../components/NoticesFilter2/NoticesFilter2";
+
+import { notices } from "../../redux/notices/operation";
 
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -26,6 +23,8 @@ export default function NoticesPage() {
       <Title>Find your favorite pet</Title>
 
       <NoticesFilters />
+
+      {/* <NoticesFilters2 /> */}
 
       {/* <NoticesList /> */}
 

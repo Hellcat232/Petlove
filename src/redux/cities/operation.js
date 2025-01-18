@@ -20,7 +20,7 @@ export const getAllLocations = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get("/cities/locations");
-      console.log(res);
+      // console.log(res);
 
       return res.data;
     } catch (error) {

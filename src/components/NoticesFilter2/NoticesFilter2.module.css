@@ -76,20 +76,11 @@
   }
 
   /*List of select start with this line==================================================================*/
-
-  .select-wrapper {
-    position: relative;
-    /* display: inline-block; */
-  }
-
   .select-dropdown {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    right: 11px;
-    top: 5px;
 
     border-radius: 15px;
     width: 295px;
@@ -104,18 +95,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    right: 11px;
-    top: 5px;
 
     border-radius: 15px;
     width: 143px;
+    height: 146px;
     border: 1px solid #ced4da;
     background: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .select-option {
+    width: 100%;
     padding: 10px;
     cursor: pointer;
     font-family: var(--font-family);
@@ -131,15 +121,8 @@
   }
 
   .select-option-active {
-    padding: 10px;
-    cursor: pointer;
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 129%;
-    letter-spacing: -0.03em;
-    /* background-color: #e9ecef; */
-    color: #f6b83d;
+    background-color: #007bff;
+    color: #ffffff;
   }
 
   /*Checkbox Styles========================================================*/
