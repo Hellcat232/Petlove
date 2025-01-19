@@ -1,4 +1,7 @@
 @media (max-width: 374px) {
+  .find-pet-section {
+    margin: 40px 20px 88px 20px;
+  }
 }
 
 @media (min-width: 375px) {

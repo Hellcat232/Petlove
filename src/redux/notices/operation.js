@@ -6,6 +6,7 @@ export const notices = createAsyncThunk(
   "get/notices",
   async (data = {}, thunkAPI) => {
     const params = transformStateToQueryParams(data);
+    // console.log(params);
 
     try {
       const cleanParams = params

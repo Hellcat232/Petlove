@@ -5,13 +5,13 @@ import { IoMdCheckmark } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useMemo } from "react";
 import SearchField from "../SearchField/SearchField";
+import SearchLocation from "../SearchLocation/SearchLocation";
 import getOption from "../../utils/getOptions";
 import {
   noticesCategories,
   noticesSex,
   noticesSpecies,
 } from "../../redux/notices/operation";
-import { getAllLocations } from "../../redux/cities/operation";
 
 import {
   selectNoticesCategories,
@@ -19,6 +19,7 @@ import {
   selectNoticesSpecies,
 } from "../../redux/notices/selectors";
 import { selectCityCities } from "../../redux/cities/selectors";
+import { useMediaQuery } from "react-responsive";
 //=================================================================================================
 const NoticesFilters = ({
   formDataNotice,
@@ -26,8 +27,11 @@ const NoticesFilters = ({
   handleChangeNotice,
   setFormDataNotice,
   handleSubmitNotice,
+  isMenuOpen,
+  setIsMenuOpen,
 }) => {
   const dispatch = useDispatch();
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   const allCategory = useSelector(selectNoticesCategories);
   const allGenders = useSelector(selectNoticesSex);
@@ -59,58 +63,133 @@ const NoticesFilters = ({
           handleSubmitNotice={handleSubmitNotice}
         />
 
-        <div className={css["category-gender"]}>
-          <div className={css["select-wrapper"]}>
+        {isDesktop ? (
+          <>
+            <div className={css["select-wrapper"]}>
+              <Select
+                unstyled
+                className={css["select-inputs-mob"]}
+                classNames={{
+                  menuList: () => css["select-dropdown-mob"],
+                  option: (state) =>
+                    state.isSelected
+                      ? css["select-option-active"]
+                      : css["select-option"],
+                }}
+                options={categoryOptions}
+                name="category"
+                placeholder="Category"
+                value={
+                  formDataNotice.category
+                    ? {
+                        value: formDataNotice.category,
+                        label: formDataNotice.category,
+                      }
+                    : null
+                }
+                onChange={(selectedOption) =>
+                  handleChangeNotice(selectedOption, "category")
+                }
+              />
+            </div>
+
             <Select
               unstyled
-              className={css["select-inputs-mob"]}
+              className={
+                isDesktop ? css["select-inputs"] : css["select-inputs-mob"]
+              }
               classNames={{
-                menuList: () => css["select-dropdown-mob"],
+                menuList: () =>
+                  css[
+                    isDesktop
+                      ? "select-dropdown-gender-desctop"
+                      : "select-dropdown-mob"
+                  ],
                 option: (state) =>
                   state.isSelected
                     ? css["select-option-active"]
                     : css["select-option"],
               }}
-              options={categoryOptions}
-              name="category"
-              placeholder="Category"
+              options={genderOptions}
+              name="gender"
+              placeholder="By gender"
               value={
-                formDataNotice.category
+                formDataNotice.gender
                   ? {
-                      value: formDataNotice.category,
-                      label: formDataNotice.category,
+                      value: formDataNotice.gender,
+                      label: formDataNotice.gender,
                     }
                   : null
               }
               onChange={(selectedOption) =>
-                handleChangeNotice(selectedOption, "category")
+                handleChangeNotice(selectedOption, "gender")
+              }
+            />
+          </>
+        ) : (
+          <div className={css["category-gender"]}>
+            <div className={css["select-wrapper"]}>
+              <Select
+                unstyled
+                className={css["select-inputs-mob"]}
+                classNames={{
+                  menuList: () => css["select-dropdown-mob"],
+                  option: (state) =>
+                    state.isSelected
+                      ? css["select-option-active"]
+                      : css["select-option"],
+                }}
+                options={categoryOptions}
+                name="category"
+                placeholder="Category"
+                value={
+                  formDataNotice.category
+                    ? {
+                        value: formDataNotice.category,
+                        label: formDataNotice.category,
+                      }
+                    : null
+                }
+                onChange={(selectedOption) =>
+                  handleChangeNotice(selectedOption, "category")
+                }
+              />
+            </div>
+
+            <Select
+              unstyled
+              className={
+                isDesktop ? css["select-inputs"] : css["select-inputs-mob"]
+              }
+              classNames={{
+                menuList: () =>
+                  css[
+                    isDesktop
+                      ? "select-dropdown-gender-desctop"
+                      : "select-dropdown-mob"
+                  ],
+                option: (state) =>
+                  state.isSelected
+                    ? css["select-option-active"]
+                    : css["select-option"],
+              }}
+              options={genderOptions}
+              name="gender"
+              placeholder="By gender"
+              value={
+                formDataNotice.gender
+                  ? {
+                      value: formDataNotice.gender,
+                      label: formDataNotice.gender,
+                    }
+                  : null
+              }
+              onChange={(selectedOption) =>
+                handleChangeNotice(selectedOption, "gender")
               }
             />
           </div>
-
-          <Select
-            unstyled
-            className={css["select-inputs-mob"]}
-            classNames={{
-              menuList: () => css["select-dropdown-mob"],
-              option: (state) =>
-                state.isSelected
-                  ? css["select-option-active"]
-                  : css["select-option"],
-            }}
-            options={genderOptions}
-            name="gender"
-            placeholder="By gender"
-            value={
-              formDataNotice.gender
-                ? { value: formDataNotice.gender, label: formDataNotice.gender }
-                : null
-            }
-            onChange={(selectedOption) =>
-              handleChangeNotice(selectedOption, "gender")
-            }
-          />
-        </div>
+        )}
 
         <Select
           unstyled
@@ -135,14 +214,14 @@ const NoticesFilters = ({
           }
         />
 
-        <Select
-          unstyled
-          className={css["select-inputs"]}
-          // options={getOption(allTypes)}
-          // name="types"
-          placeholder="Location"
-          value={formDataNotice.locations}
-          onChange={handleChangeNotice}
+        <SearchLocation
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          formDataNotice={formDataNotice}
+          handleChangeNotice={handleChangeNotice}
+          setFormDataNotice={setFormDataNotice}
+          defaultStateNotice={defaultStateNotice}
+          handleSubmitNotice={handleSubmitNotice}
         />
       </div>
 

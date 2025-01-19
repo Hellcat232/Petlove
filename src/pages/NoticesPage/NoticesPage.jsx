@@ -13,8 +13,9 @@ import { useEffect, useState } from "react";
 export default function NoticesPage() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(defaultState);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  console.log(formData);
+  console.log(formData, "formData");
 
   useEffect(() => {
     dispatch(notices());
@@ -22,14 +23,20 @@ export default function NoticesPage() {
 
   const handleChangeNotice = (event, fieldName) => {
     if (fieldName) {
-      // Для Select или других данных с полем
+      console.log("Updating field:", fieldName, "with value:", event);
+
+      setIsMenuOpen(false);
+
       setFormData((prev) => ({
         ...prev,
-        [fieldName]: event.value || "",
+        [fieldName]: event?.value || "",
+        [`${fieldName}Label`]: event?.label || "",
       }));
     } else if (event && event.target) {
-      // Для стандартных событий ввода
       const { name, value, type, checked } = event.target;
+
+      // console.log("Updating field:", name, "with value:", value);
+
       setFormData((prev) => ({
         ...prev,
         [name]: type === "checkbox" ? checked : value,
@@ -43,6 +50,7 @@ export default function NoticesPage() {
     event.preventDefault();
 
     dispatch(notices(formData));
+    setIsMenuOpen(false);
     setFormData(defaultState);
   }
 
@@ -56,6 +64,8 @@ export default function NoticesPage() {
         handleChangeNotice={handleChangeNotice}
         setFormDataNotice={setFormData}
         handleSubmitNotice={handleSubmit}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
       />
 
       {/* <NoticesFilters2 /> */}
