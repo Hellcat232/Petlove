@@ -17,7 +17,7 @@ import {
 
 export default function NewsPage() {
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState("");
+  const [searchNewsPage, setSearchNewsPage] = useState("");
   const page = useSelector(selectNewsPage);
   const perPage = useSelector(selectNewsPerPage);
   const totalPages = useSelector(selectNewsTotalPages);
@@ -27,15 +27,19 @@ export default function NewsPage() {
     dispatch(getNews({}));
   }, [dispatch]);
 
-  const handleSearch = (searchData) => {
+  const handleChangeNewsPage = (e) => {
+    setSearchNewsPage(e.target.value);
+  };
+
+  const handleSearchNewsPage = (searchData) => {
     console.log(searchData);
 
-    if (!searchData.keyword.trim()) {
+    if (!searchData.trim()) {
       console.error("Search query is empty!");
       return;
     }
 
-    dispatch(getNews({ keyword: searchData.keyword.trim() }));
+    dispatch(getNews({ keyword: searchData.trim() }));
   };
 
   return (
@@ -43,9 +47,10 @@ export default function NewsPage() {
       <div className={css["title-and-search"]}>
         <Title>News</Title>
         <SearchField
-          handleSearch={(searchWord) => handleSearch(searchWord)}
-          setSearchValue={setSearchValue}
-          searchValue={searchValue}
+          handleChangeNewsPage={handleChangeNewsPage}
+          handleSearchNewsPage={handleSearchNewsPage}
+          setSearchNewsPage={setSearchNewsPage}
+          searchNewsPage={searchNewsPage}
         />
       </div>
 

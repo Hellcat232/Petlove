@@ -21,24 +21,23 @@ import {
 import { selectCityCities } from "../../redux/cities/selectors";
 //=================================================================================================
 const NoticesFilters = ({
-  formData,
-  defaultState,
-  handleChange,
-  setFormData,
-  handleSubmit,
+  formDataNotice,
+  defaultStateNotice,
+  handleChangeNotice,
+  setFormDataNotice,
+  handleSubmitNotice,
 }) => {
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState("");
 
   const allCategory = useSelector(selectNoticesCategories);
   const allGenders = useSelector(selectNoticesSex);
   const allTypes = useSelector(selectNoticesSpecies);
 
   const hasChanged = useMemo(() => {
-    return !Object.values(formData).every(
-      (value, idx) => value === Object.values(defaultState)[idx]
+    return !Object.values(formDataNotice).every(
+      (value, idx) => value === Object.values(defaultStateNotice)[idx]
     );
-  }, [formData, defaultState]);
+  }, [formDataNotice, defaultStateNotice]);
 
   const categoryOptions = useMemo(() => getOption(allCategory), [allCategory]);
   const genderOptions = useMemo(() => getOption(allGenders), [allGenders]);
@@ -50,21 +49,14 @@ const NoticesFilters = ({
   }, [dispatch]);
 
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
+    <form onSubmit={handleSubmitNotice} className={css.form}>
       <div className={css.content}>
         <SearchField
-          handleSearch={(data) =>
-            handleChange({ target: { name: "keyword", value: data.keyword } })
-          }
-          resetForm={() => {
-            setSearchValue("");
-            setFormData(defaultState);
-          }}
-          setFormData={setFormData}
-          setSearchValue={setSearchValue}
-          searchValue={searchValue}
-          defaultState={defaultState}
-          formData={formData}
+          formDataNotice={formDataNotice}
+          defaultStateNotice={defaultStateNotice}
+          handleChangeNotice={handleChangeNotice}
+          setFormDataNotice={setFormDataNotice}
+          handleSubmitNotice={handleSubmitNotice}
         />
 
         <div className={css["category-gender"]}>
@@ -83,12 +75,15 @@ const NoticesFilters = ({
               name="category"
               placeholder="Category"
               value={
-                formData.category
-                  ? { value: formData.category, label: formData.category }
+                formDataNotice.category
+                  ? {
+                      value: formDataNotice.category,
+                      label: formDataNotice.category,
+                    }
                   : null
               }
               onChange={(selectedOption) =>
-                handleChange(selectedOption, "category")
+                handleChangeNotice(selectedOption, "category")
               }
             />
           </div>
@@ -107,12 +102,12 @@ const NoticesFilters = ({
             name="gender"
             placeholder="By gender"
             value={
-              formData.gender
-                ? { value: formData.gender, label: formData.gender }
+              formDataNotice.gender
+                ? { value: formDataNotice.gender, label: formDataNotice.gender }
                 : null
             }
             onChange={(selectedOption) =>
-              handleChange(selectedOption, "gender")
+              handleChangeNotice(selectedOption, "gender")
             }
           />
         </div>
@@ -131,11 +126,13 @@ const NoticesFilters = ({
           name="types"
           placeholder="By type"
           value={
-            formData.types
-              ? { value: formData.types, label: formData.types }
+            formDataNotice.types
+              ? { value: formDataNotice.types, label: formDataNotice.types }
               : null
           }
-          onChange={(selectedOption) => handleChange(selectedOption, "types")}
+          onChange={(selectedOption) =>
+            handleChangeNotice(selectedOption, "types")
+          }
         />
 
         <Select
@@ -144,8 +141,8 @@ const NoticesFilters = ({
           // options={getOption(allTypes)}
           // name="types"
           placeholder="Location"
-          value={formData.locations}
-          onChange={handleChange}
+          value={formDataNotice.locations}
+          onChange={handleChangeNotice}
         />
       </div>
 
@@ -156,9 +153,9 @@ const NoticesFilters = ({
           type="checkbox"
           name="popular"
           id="popular"
-          checked={formData.popular}
-          onChange={handleChange}
-          disabled={formData.unpopular}
+          checked={formDataNotice.popular}
+          onChange={handleChangeNotice}
+          disabled={formDataNotice.unpopular}
         />
         <label htmlFor="popular">
           Popular{" "}
@@ -171,9 +168,9 @@ const NoticesFilters = ({
           type="checkbox"
           name="unpopular"
           id="unpopular"
-          checked={formData.unpopular}
-          onChange={handleChange}
-          disabled={formData.popular}
+          checked={formDataNotice.unpopular}
+          onChange={handleChangeNotice}
+          disabled={formDataNotice.popular}
         />
         <label htmlFor="unpopular">
           Unpopular{" "}
@@ -186,9 +183,9 @@ const NoticesFilters = ({
           type="checkbox"
           name="cheap"
           id="cheap"
-          checked={formData.cheap}
-          onChange={handleChange}
-          disabled={formData.expensive}
+          checked={formDataNotice.cheap}
+          onChange={handleChangeNotice}
+          disabled={formDataNotice.expensive}
         />
         <label htmlFor="cheap">
           Cheap{" "}
@@ -201,9 +198,9 @@ const NoticesFilters = ({
           type="checkbox"
           name="expensive"
           id="expensive"
-          checked={formData.expensive}
-          onChange={handleChange}
-          disabled={formData.cheap}
+          checked={formDataNotice.expensive}
+          onChange={handleChangeNotice}
+          disabled={formDataNotice.cheap}
         />
         <label htmlFor="expensive">
           Expensive{" "}
@@ -229,8 +226,7 @@ const NoticesFilters = ({
               type="button"
               className={css["apply-btn"]}
               onClick={() => {
-                setFormData(defaultState);
-                setSearchValue("");
+                setFormDataNotice(defaultStateNotice);
               }}
             >
               Reset{" "}

@@ -3,32 +3,44 @@ import css from "./SearchField.module.css";
 import { FiSearch } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useMatch } from "react-router-dom";
-// import defaultState from "../../utils/defaultStateForFilter";
 
 const SearchField = ({
-  handleSearch,
-  fieldName = "keyword",
-  setSearchValue,
-  setFormData,
-  searchValue,
-  resetForm,
-  formData,
+  handleSearchNewsPage,
+  handleChangeNewsPage,
+  setSearchNewsPage,
+  searchNewsPage,
+
+  formDataNotice,
+  defaultStateNotice,
+  handleChangeNotice,
+  setFormDataNotice,
+  handleSubmitNotice,
 }) => {
   const matchNotices = useMatch("/notices");
-  // const [searchValue, setSearchValue] = useState("");
+  const matchNews = useMatch("/news");
 
-  const handleInputChange = (e) => {
-    setSearchValue(e.target.value);
+  const resetForm = () => {
+    if (matchNews) {
+      setSearchNewsPage("");
+    } else {
+      setFormDataNotice(defaultStateNotice);
+    }
   };
 
   const handleSearchClick = () => {
-    handleSearch(fieldName ? { [fieldName]: searchValue } : searchValue);
+    if (matchNews) {
+      handleSearchNewsPage(searchNewsPage);
+    }
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSearch(fieldName ? { [fieldName]: searchValue } : searchValue);
+      if (matchNews) {
+        handleSearchNewsPage(searchNewsPage);
+      } else {
+        handleSubmitNotice(e);
+      }
     }
   };
 
@@ -36,10 +48,10 @@ const SearchField = ({
     <div className="relative">
       <input
         type="text"
-        name={fieldName}
+        name="keyword"
         placeholder="Search"
-        value={searchValue}
-        onChange={handleInputChange}
+        value={matchNews ? searchNewsPage : formDataNotice.keyword || ""}
+        onChange={matchNews ? handleChangeNewsPage : handleChangeNotice}
         onKeyDown={handleKeyPress}
         className={matchNotices ? css["search-notices"] : css.search}
       />
@@ -50,9 +62,15 @@ const SearchField = ({
         }
       >
         <button
-          type="submit"
+          type="button"
           onClick={resetForm}
-          className={searchValue === "" ? css["red-cross-btn"] : null}
+          className={`${
+            matchNews && searchNewsPage === "" ? css["red-cross-btn"] : null
+          }  ${
+            matchNotices && formDataNotice.keyword === ""
+              ? css["red-cross-btn"]
+              : null
+          }`}
         >
           <IoClose className={css["red-cross"]} />
         </button>

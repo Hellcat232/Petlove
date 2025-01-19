@@ -20,12 +20,12 @@ export default function NoticesPage() {
     dispatch(notices());
   }, [dispatch]);
 
-  const handleChange = (event, fieldName) => {
+  const handleChangeNotice = (event, fieldName) => {
     if (fieldName) {
       // Для Select или других данных с полем
       setFormData((prev) => ({
         ...prev,
-        [fieldName]: event.value || "", // Используем значение из объекта
+        [fieldName]: event.value || "",
       }));
     } else if (event && event.target) {
       // Для стандартных событий ввода
@@ -43,6 +43,7 @@ export default function NoticesPage() {
     event.preventDefault();
 
     dispatch(notices(formData));
+    setFormData(defaultState);
   }
 
   return (
@@ -50,11 +51,11 @@ export default function NoticesPage() {
       <Title>Find your favorite pet</Title>
 
       <NoticesFilters
-        formData={formData}
-        defaultState={defaultState}
-        handleChange={handleChange}
-        setFormData={setFormData}
-        handleSubmit={handleSubmit}
+        formDataNotice={formData}
+        defaultStateNotice={defaultState}
+        handleChangeNotice={handleChangeNotice}
+        setFormDataNotice={setFormData}
+        handleSubmitNotice={handleSubmit}
       />
 
       {/* <NoticesFilters2 /> */}
