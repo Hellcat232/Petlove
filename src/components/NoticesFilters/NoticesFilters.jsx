@@ -3,7 +3,7 @@ import Select from "react-select";
 import { IoClose } from "react-icons/io5";
 import { IoMdCheckmark } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import SearchField from "../SearchField/SearchField";
 import getOption from "../../utils/getOptions";
 import {
@@ -19,61 +19,53 @@ import {
   selectNoticesSpecies,
 } from "../../redux/notices/selectors";
 import { selectCityCities } from "../../redux/cities/selectors";
-
-const defaultState = {
-  category: "",
-  gender: "",
-  types: "",
-  locations: "",
-  popular: false,
-  unpopular: false,
-  cheap: false,
-  expensive: false,
-};
-
-const NoticesFilters = () => {
+//=================================================================================================
+const NoticesFilters = ({
+  formData,
+  defaultState,
+  handleChange,
+  setFormData,
+  handleSubmit,
+}) => {
   const dispatch = useDispatch();
+  const [searchValue, setSearchValue] = useState("");
+
   const allCategory = useSelector(selectNoticesCategories);
   const allGenders = useSelector(selectNoticesSex);
   const allTypes = useSelector(selectNoticesSpecies);
-  const [formData, setFormData] = useState(defaultState);
 
-  const hasChanged = !Object.values(formData).every(
-    (value, idx) => value === Object.values(defaultState)[idx]
-  );
+  const hasChanged = useMemo(() => {
+    return !Object.values(formData).every(
+      (value, idx) => value === Object.values(defaultState)[idx]
+    );
+  }, [formData, defaultState]);
+
+  const categoryOptions = useMemo(() => getOption(allCategory), [allCategory]);
+  const genderOptions = useMemo(() => getOption(allGenders), [allGenders]);
+  const typeOptions = useMemo(() => getOption(allTypes), [allTypes]);
 
   useEffect(() => {
     const actions = [noticesCategories(), noticesSex(), noticesSpecies()];
     actions.forEach(dispatch);
   }, [dispatch]);
 
-  const handleChange = (event, fieldName) => {
-    if (fieldName) {
-      // Для кастомного Select
-      setFormData((prev) => ({
-        ...prev,
-        [fieldName]: event.value, // Используем `value` из объекта
-      }));
-    } else {
-      // Для стандартных полей
-      const { name, value, type, checked } = event.target;
-      setFormData((prev) => ({
-        ...prev,
-        [name]: type === "checkbox" ? checked : value,
-      }));
-    }
-  };
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    console.log(formData);
-  }
-
   return (
     <form onSubmit={handleSubmit} className={css.form}>
       <div className={css.content}>
-        <SearchField />
+        <SearchField
+          handleSearch={(data) =>
+            handleChange({ target: { name: "keyword", value: data.keyword } })
+          }
+          resetForm={() => {
+            setSearchValue("");
+            setFormData(defaultState);
+          }}
+          setFormData={setFormData}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+          defaultState={defaultState}
+          formData={formData}
+        />
 
         <div className={css["category-gender"]}>
           <div className={css["select-wrapper"]}>
@@ -87,7 +79,7 @@ const NoticesFilters = () => {
                     ? css["select-option-active"]
                     : css["select-option"],
               }}
-              options={getOption(allCategory)}
+              options={categoryOptions}
               name="category"
               placeholder="Category"
               value={
@@ -111,7 +103,7 @@ const NoticesFilters = () => {
                   ? css["select-option-active"]
                   : css["select-option"],
             }}
-            options={getOption(allGenders)}
+            options={genderOptions}
             name="gender"
             placeholder="By gender"
             value={
@@ -135,7 +127,7 @@ const NoticesFilters = () => {
                 ? css["select-option-active"]
                 : css["select-option"],
           }}
-          options={getOption(allTypes)}
+          options={typeOptions}
           name="types"
           placeholder="By type"
           value={
@@ -166,6 +158,7 @@ const NoticesFilters = () => {
           id="popular"
           checked={formData.popular}
           onChange={handleChange}
+          disabled={formData.unpopular}
         />
         <label htmlFor="popular">
           Popular{" "}
@@ -180,6 +173,7 @@ const NoticesFilters = () => {
           id="unpopular"
           checked={formData.unpopular}
           onChange={handleChange}
+          disabled={formData.popular}
         />
         <label htmlFor="unpopular">
           Unpopular{" "}
@@ -194,6 +188,7 @@ const NoticesFilters = () => {
           id="cheap"
           checked={formData.cheap}
           onChange={handleChange}
+          disabled={formData.expensive}
         />
         <label htmlFor="cheap">
           Cheap{" "}
@@ -208,6 +203,7 @@ const NoticesFilters = () => {
           id="expensive"
           checked={formData.expensive}
           onChange={handleChange}
+          disabled={formData.cheap}
         />
         <label htmlFor="expensive">
           Expensive{" "}
@@ -232,7 +228,10 @@ const NoticesFilters = () => {
             <button
               type="button"
               className={css["apply-btn"]}
-              onClick={() => setFormData(defaultState)}
+              onClick={() => {
+                setFormData(defaultState);
+                setSearchValue("");
+              }}
             >
               Reset{" "}
               <span>

@@ -1,26 +1,24 @@
 import axios from "../../api/api.js";
+import transformStateToQueryParams from "../../utils/transformStateToQueryParams.js";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const notices = createAsyncThunk(
   "get/notices",
-  async (data, thunkAPI) => {
-    const queryParams = {
-      keyword: data.keyword || "",
-      category: data.category || [],
-      species: data.species || [],
-      locationId: data.locationId,
-      byDate: data.byDate,
-      byPrice: data.byPrice,
-      byPopularity: data.byPopularity,
-      page: data.page || 1,
-      limit: data.limit || 6,
-      sex: data.sex || [],
-    };
+  async (data = {}, thunkAPI) => {
+    const params = transformStateToQueryParams(data);
 
     try {
-      const res = await axios.get("/notices", { params: queryParams });
-      //   console.log(res);
+      const cleanParams = params
+        ? Object.fromEntries(
+            Object.entries(params).filter(([_, value]) => value !== null)
+          )
+        : null;
 
+      const res = await axios.get("/notices", {
+        params: cleanParams || undefined,
+      });
+
+      console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

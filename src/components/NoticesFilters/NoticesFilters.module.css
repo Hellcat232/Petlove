@@ -181,6 +181,12 @@
     transform: scale(1.05);
   }
 
+  .checkbox-button input[type="checkbox"]:disabled + label {
+    background-color: lightgrey;
+    border: 1px solid transparent;
+    color: #fff;
+  }
+
   .checkbox-button label:hover {
     border: 1px solid #f6b83d;
     transition: all 0.5s ease;
@@ -197,19 +203,6 @@
   .checkbox-button input[type="checkbox"]:not(:checked) + label span {
     display: none;
   }
-
-  /* .hidden-btns {
-    height: 0;
-    opacity: 0;
-    transition: height 0.5s ease, opacity 0.5s ease;
-  }
-
-  .hidden-btns-active {
-    display: inline-block;
-    height: auto;
-    opacity: 1;
-    transition: all 1s ease;
-  } */
 
   .cross {
     width: 18px;
