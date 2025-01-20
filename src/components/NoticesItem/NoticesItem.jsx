@@ -14,6 +14,7 @@ const NoticesItem = ({ notice }) => {
         src={notice.imgURL}
         alt="notice image"
         className={css["notice-img"]}
+        loading="lazy"
       />
 
       <div className={css["info-block"]}>

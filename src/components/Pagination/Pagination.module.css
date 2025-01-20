@@ -1,6 +1,6 @@
 @media (max-width: 374px) {
   .pagination {
-    margin-top: 40px;
+    margin: 40px 0 0 0;
     gap: 10px;
     display: flex;
     flex-direction: row;
@@ -110,7 +110,7 @@
 
 @media (min-width: 375px) {
   .pagination {
-    margin-top: 44px;
+    margin: 44px 0 0 0;
     gap: 11px;
     display: flex;
     flex-direction: row;
@@ -220,7 +220,7 @@
 
 @media (min-width: 768px) {
   .pagination {
-    margin-top: 60px;
+    margin: 60px 129px 0 129px;
     gap: 24px;
     width: 446px;
   }
@@ -288,6 +288,7 @@
 
 @media (min-width: 1280px) {
   .pagination {
+    margin: 60px auto 0 auto;
   }
 
   .arrows-box-left {

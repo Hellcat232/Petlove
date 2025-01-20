@@ -8,6 +8,10 @@ export const selectNoticesPerPage = (state) =>
 export const selectNoticesTotalPages = (state) =>
   state.notices.pages.totalPages;
 
+export const selectNoticesKeyword = (state) => state.notices.keyword;
+
+export const selectNoticesPagination = (state) => state.notices.pagination;
+
 export const selectNoticesError = (state) => state.notices.error;
 
 export const selectNoticesLoading = (state) => state.notices.loading;

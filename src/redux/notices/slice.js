@@ -12,6 +12,7 @@ import {
 
 const items = {
   pages: { page: null, perPage: null, totalPages: null },
+  pagination: {},
   results: [],
   categories: [],
   sex: [],
@@ -31,10 +32,13 @@ const noticesSlice = createSlice({
         state.error = null;
       })
       .addCase(notices.fulfilled, (state, action) => {
+        console.log(action);
+
         state.pages.page = action.payload.page;
         state.pages.perPage = action.payload.perPage;
         state.pages.totalPages = action.payload.totalPages;
         state.results = action.payload.results;
+        state.pagination = action.meta?.arg || {};
         state.error = null;
         state.loading = false;
       })

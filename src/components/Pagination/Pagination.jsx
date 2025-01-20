@@ -3,14 +3,22 @@ import css from "./Pagination.module.css";
 
 import { useMediaQuery } from "react-responsive";
 import { getNews } from "../../redux/news/operation";
+import { notices } from "../../redux/notices/operation";
+import { useMatch } from "react-router-dom";
 
 const Pagination = ({ keyword, page, perPage, totalPages }) => {
   const dispatch = useDispatch();
   const isTablet = useMediaQuery({ minWidth: 768 });
+  const matchNews = useMatch("/news");
+  const matchNotice = useMatch("/notices");
 
   function handlePageChange(newPage) {
     if (newPage > 0 && newPage <= totalPages) {
-      dispatch(getNews({ keyword, page: newPage, limit: perPage }));
+      matchNews &&
+        dispatch(getNews({ keyword, page: newPage, limit: perPage }));
+
+      matchNotice &&
+        dispatch(notices({ ...keyword, page: newPage, limit: perPage }));
     }
   }
 

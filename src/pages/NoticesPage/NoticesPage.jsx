@@ -6,12 +6,22 @@ import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
 import defaultState from "../../utils/defaultStateForFilter";
 
 import { notices } from "../../redux/notices/operation";
+import {
+  selectNoticesPagination,
+  selectNoticesPage,
+  selectNoticesPerPage,
+  selectNoticesTotalPages,
+} from "../../redux/notices/selectors";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 export default function NoticesPage() {
   const dispatch = useDispatch();
+  const page = useSelector(selectNoticesPage);
+  const perPage = useSelector(selectNoticesPerPage);
+  const totalPages = useSelector(selectNoticesTotalPages);
+  const pagination = useSelector(selectNoticesPagination);
   const [formData, setFormData] = useState(defaultState);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -23,7 +33,7 @@ export default function NoticesPage() {
 
   const handleChangeNotice = (event, fieldName) => {
     if (fieldName) {
-      console.log("Updating field:", fieldName, "with value:", event);
+      // console.log("Updating field:", fieldName, "with value:", event);
 
       setIsMenuOpen(false);
 
@@ -70,7 +80,16 @@ export default function NoticesPage() {
 
       <NoticesList />
 
-      <Pagination />
+      {totalPages > 1 ? (
+        <Pagination
+          keyword={pagination}
+          page={page}
+          perPage={perPage}
+          totalPages={totalPages}
+        />
+      ) : (
+        <p>Not found any pets</p>
+      )}
     </section>
   );
 }

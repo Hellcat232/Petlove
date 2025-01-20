@@ -9,7 +9,7 @@ const transformStateToQueryParams = (data) => {
     // byPopularity: data.popular || data.unpopular ? data.popular : null,
     byPopularity: data.unpopular || data.popular ? data.unpopular : null,
     page: data.page || 1,
-    limit: data.limit || 6,
+    limit: data.perPage || 6,
     sex: data.gender?.toLowerCase() || "",
   };
 };
