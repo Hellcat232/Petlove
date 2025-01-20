@@ -1,6 +1,13 @@
 import css from "./NoticesItem.module.css";
+import { IoHeartOutline } from "react-icons/io5";
+import { FaStar } from "react-icons/fa";
+import calculatePupularity from "../../utils/calculatePupularity";
 
 const NoticesItem = ({ notice }) => {
+  function toUpperCase(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+
   return (
     <li className={css.card}>
       <img
@@ -11,7 +18,18 @@ const NoticesItem = ({ notice }) => {
 
       <div className={css["info-block"]}>
         <div className={css["title-and-list"]}>
-          <h2 className={css.title}>{notice.title}</h2>
+          <div className="flex flex-row justify-between items-center">
+            <h2 className={css.title}>{notice.title}</h2>
+            <div className="flex flex-row gap-1 items-center">
+              <span>
+                <FaStar className={css.star} />
+              </span>
+              {/* <p className={css.popularity}>{notice.popularity}</p> */}
+              <p className={css.popularity}>
+                {calculatePupularity(notice.popularity)}
+              </p>
+            </div>
+          </div>
 
           <ul className={css["about-list"]}>
             <li className={css["about-item"]}>
@@ -24,32 +42,39 @@ const NoticesItem = ({ notice }) => {
             </li>
             <li className={css["about-item"]}>
               <p className={css.name}>Sex</p>
-              <span className={css.span}>{notice.sex}</span>
+              <span className={css.span}>{toUpperCase(notice.sex)}</span>
             </li>
             <li className={css["about-item"]}>
               <p className={css.name}>Species</p>
-              <span className={css.span}>{notice.species}</span>
+              <span className={css.span}>{toUpperCase(notice.species)}</span>
             </li>
             <li className={css["about-item"]}>
               <p className={css.name}>Category</p>
-              <span className={css.span}>{notice.category}</span>
+              <span className={css.span}>{toUpperCase(notice.category)}</span>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div className="h-9">
           <p className={css.comment}>{notice.comment}</p>
         </div>
 
-        <div>
-          {/* <p className={css.price}>{notice.price && `$${notice.price}`}</p> */}
-          <p className={notice.price ? css.price : css["price-hidden"]}>
-            {`$${notice.price}.99`}
+        <div className={css["bottom-card"]}>
+          <p className={css.price}>
+            {notice.price
+              ? `$${notice.price}.99`
+              : toUpperCase(notice.category)}
           </p>
 
-          <button type="button" className={css["learn-more-btn"]}>
-            Learn more
-          </button>
+          <div className={css["btns-block"]}>
+            <button type="button" className={css["learn-more-btn"]}>
+              Learn more
+            </button>
+
+            <button type="button" className={css["heart-btn"]}>
+              <IoHeartOutline className={css["icon-heart"]} />
+            </button>
+          </div>
         </div>
       </div>
     </li>

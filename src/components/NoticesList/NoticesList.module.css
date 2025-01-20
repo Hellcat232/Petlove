@@ -3,14 +3,30 @@
 
 @media (min-width: 375px) {
   .notice-list {
+    margin: 40px 0 0 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
   }
 }
 
 @media (min-width: 768px) {
+  .notice-list {
+    width: 704px;
+    margin: 32px 0 0 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 @media (min-width: 1280px) {
+  .notice-list {
+    width: 1153px;
+    margin: 40px 32px 0 32px;
+    justify-content: center;
+    column-gap: 32px;
+    row-gap: 40px;
+  }
 }

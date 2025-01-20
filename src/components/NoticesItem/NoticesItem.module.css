@@ -3,10 +3,13 @@
 
 @media (min-width: 375px) {
   .card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     border-radius: 16px;
-    padding: 32px;
+    padding: 24px 24px 24px 24px;
     width: 335px;
-    height: 454px;
+    height: auto;
     background: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
@@ -29,18 +32,30 @@
     gap: 8px;
   }
 
+  .popularity {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    color: #2b2b2a;
+  }
+
   .title {
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 16px;
     line-height: 125%;
     color: #2b2b2a;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .about-list {
     display: flex;
     flex-direction: row;
-    gap: 14px;
+    justify-content: space-between;
   }
 
   .about-item {
@@ -75,6 +90,12 @@
     color: #2b2b2a;
   }
 
+  .bottom-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .price {
     font-family: var(--font-family);
     font-weight: 700;
@@ -85,11 +106,17 @@
 
   .price-hidden {
     visibility: hidden;
+    /* display: none; */
+  }
+
+  .btns-block {
+    display: flex;
+    gap: 10px;
   }
 
   .learn-more-btn {
     border-radius: 30px;
-    padding: 14px 80px;
+    padding: 14px 70px;
     width: 231px;
     height: 46px;
     background: #f6b83d;
@@ -108,10 +135,108 @@
     transition: all 0.4s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+
+  .heart-btn {
+    border-radius: 30px;
+    padding: 14px;
+    width: 46px;
+    height: 46px;
+    background: #fff4df;
+  }
+
+  .heart-btn:hover {
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-heart {
+    color: #f6b83d;
+  }
+
+  .star {
+    width: 16px;
+    height: 16px;
+    color: #f6b83d;
+  }
 }
 
 @media (min-width: 768px) {
+  .card {
+    width: 342px;
+  }
+
+  .notice-img {
+    width: 294px;
+  }
+
+  .info-block {
+  }
+
+  .title-and-list {
+  }
+
+  .popularity {
+    line-height: 143%;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .about-list {
+  }
+
+  .about-item {
+  }
+
+  .name {
+  }
+
+  .span {
+  }
+
+  .comment {
+  }
+
+  .bottom-card {
+    margin-top: 8px;
+  }
+
+  .price {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .btns-block {
+  }
+
+  .learn-more-btn {
+    padding: 14px 65px;
+    width: 236px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .heart-btn {
+    padding: 15px;
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (min-width: 1280px) {
+  .card {
+    width: 363px;
+  }
+
+  .notice-img {
+    width: 315px;
+  }
+
+  .learn-more-btn {
+    width: 257px;
+  }
 }
