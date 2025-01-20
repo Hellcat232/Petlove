@@ -5,6 +5,7 @@
     height: 160px;
     background: #fff;
     padding: 12px 12px 30px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .content {
@@ -101,8 +102,8 @@
     width: 335px;
     height: 184px;
     background: #fff;
-
     padding: 12px 12px 40px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .content {

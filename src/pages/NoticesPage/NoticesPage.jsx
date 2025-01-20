@@ -68,9 +68,7 @@ export default function NoticesPage() {
         setIsMenuOpen={setIsMenuOpen}
       />
 
-      {/* <NoticesFilters2 /> */}
-
-      {/* <NoticesList /> */}
+      <NoticesList />
 
       <Pagination />
     </section>

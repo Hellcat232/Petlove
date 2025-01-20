@@ -20,7 +20,7 @@ const SearchLocation = ({
 }) => {
   const dispatch = useDispatch();
   const [inputState, setInputState] = useState("");
-  console.log(inputState);
+  // console.log(inputState);
 
   const resetForm = (e) => {
     console.log("Reset form called");

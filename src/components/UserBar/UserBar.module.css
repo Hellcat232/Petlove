@@ -31,6 +31,7 @@
   transition-duration: 300ms;
   transition-delay: 100ms;
   background: #fdeccd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .icon-div-home {
