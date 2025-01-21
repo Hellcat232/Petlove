@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
 :root {
   --font-family: "Manrope", sans-serif;
   line-height: 1.5;

@@ -6,13 +6,6 @@ import LogOutBtn from "../LogOutBtn/LogOut";
 import Modal from "react-modal";
 
 const BurgerModal = ({ modalIsOpen, setIsOpen, isTablet, isLogged }) => {
-  // let subtitle;
-
-  // function afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  //   subtitle.style.color = "#f00";
-  // }
-
   function closeModal() {
     setIsOpen(false);
   }

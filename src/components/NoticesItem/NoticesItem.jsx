@@ -1,11 +1,19 @@
 import css from "./NoticesItem.module.css";
+import { useState } from "react";
 import { IoHeartOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import calculatePupularity from "../../utils/calculatePupularity";
 
-const NoticesItem = ({ notice }) => {
+const NoticesItem = ({ notice, setModalOpen }) => {
+  const [isLogged, setIsLogged] =
+    useState(false); /* TEMPORARY STATE FOR TEST */
+
   function toUpperCase(value) {
     return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+
+  function handleOpenModal() {
+    setModalOpen(true);
   }
 
   return (
@@ -68,11 +76,19 @@ const NoticesItem = ({ notice }) => {
           </p>
 
           <div className={css["btns-block"]}>
-            <button type="button" className={css["learn-more-btn"]}>
+            <button
+              type="button"
+              className={css["learn-more-btn"]}
+              onClick={handleOpenModal}
+            >
               Learn more
             </button>
 
-            <button type="button" className={css["heart-btn"]}>
+            <button
+              type="button"
+              className={css["heart-btn"]}
+              onClick={handleOpenModal}
+            >
               <IoHeartOutline className={css["icon-heart"]} />
             </button>
           </div>
