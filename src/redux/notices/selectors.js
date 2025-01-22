@@ -1,5 +1,7 @@
 export const selectNotices = (state) => state.notices.results;
 
+export const selectNoticeById = (state) => state.notices.noticeById;
+
 export const selectNoticesPage = (state) => state.notices.pages.page;
 
 export const selectNoticesPerPage = (state) =>

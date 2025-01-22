@@ -8,23 +8,23 @@ const ModalAttention = ({ children, modalIsOpen, setModalOpen }) => {
   }
 
   return (
-    <div className={css.div}>
-      <Modal
-        isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        shouldCloseOnEsc
-        shouldCloseOnOverlayClick
-        overlayClassName={css["attention-modal-overlay"]}
-        className={css["attention-modal-content"]}
-        contentLabel="Example Modal"
-      >
-        <div className="relative">
-          <IoClose onClick={closeModal} className={css.close} />
-        </div>
-        {children}
-      </Modal>
-    </div>
+    // <div className={css.div}>
+    <Modal
+      isOpen={modalIsOpen}
+      // onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      shouldCloseOnEsc
+      shouldCloseOnOverlayClick
+      overlayClassName={css["attention-modal-overlay"]}
+      className={css["attention-modal-content"]}
+      contentLabel="Example Modal"
+    >
+      <div className="relative">
+        <IoClose onClick={closeModal} className={css.close} />
+      </div>
+      {children}
+    </Modal>
+    // {/* </div> */}
   );
 };
 

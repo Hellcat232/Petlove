@@ -1,7 +1,6 @@
 import "./App.css";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Modal from "react-modal";
 import Layout from "../Layout/Layout";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
@@ -20,7 +19,9 @@ const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
 
-Modal.setAppElement("#root");
+// import Modal from "react-modal";
+
+// Modal.setAppElement("#root");
 
 function App() {
   return (

@@ -14,6 +14,7 @@ const items = {
   pages: { page: null, perPage: null, totalPages: null },
   pagination: {},
   results: [],
+  noticeById: {},
   categories: [],
   sex: [],
   species: [],
@@ -32,7 +33,7 @@ const noticesSlice = createSlice({
         state.error = null;
       })
       .addCase(notices.fulfilled, (state, action) => {
-        console.log(action);
+        // console.log(action);
 
         state.pages.page = action.payload.page;
         state.pages.perPage = action.payload.perPage;
@@ -92,9 +93,21 @@ const noticesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(noticesById.pending, (state, action) => {})
-      .addCase(noticesById.fulfilled, (state, action) => {})
-      .addCase(noticesById.rejected, (state, action) => {})
+      .addCase(noticesById.pending, (state, action) => {
+        state.error = null;
+        state.loading = true;
+        state.noticeById = {};
+      })
+      .addCase(noticesById.fulfilled, (state, action) => {
+        state.error = null;
+        state.loading = false;
+        state.noticeById = action.payload;
+      })
+      .addCase(noticesById.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loading = false;
+        state.noticeById = {};
+      })
       .addCase(noticesFavoriteAddById.pending, (state, action) => {})
       .addCase(noticesFavoriteAddById.fulfilled, (state, action) => {})
       .addCase(noticesFavoriteAddById.rejected, (state, action) => {})

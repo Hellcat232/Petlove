@@ -19,7 +19,7 @@ export const notices = createAsyncThunk(
         params: cleanParams || undefined,
       });
 
-      console.log(res);
+      // console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -73,6 +73,7 @@ export const noticesById = createAsyncThunk(
   "notices/id",
   async (id, thunkAPI) => {
     const { auth } = thunkAPI.getState();
+    console.log(id);
 
     try {
       const res = await axios.get(`/notices/${id}`, {

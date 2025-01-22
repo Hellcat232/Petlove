@@ -1,19 +1,11 @@
 import css from "./NoticesItem.module.css";
-import { useState } from "react";
 import { IoHeartOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import calculatePupularity from "../../utils/calculatePupularity";
 
-const NoticesItem = ({ notice, setModalOpen }) => {
-  const [isLogged, setIsLogged] =
-    useState(false); /* TEMPORARY STATE FOR TEST */
-
+const NoticesItem = ({ notice, handleOpenModal }) => {
   function toUpperCase(value) {
     return value.charAt(0).toUpperCase() + value.slice(1);
-  }
-
-  function handleOpenModal() {
-    setModalOpen(true);
   }
 
   return (
@@ -47,7 +39,9 @@ const NoticesItem = ({ notice, setModalOpen }) => {
             </li>
             <li className={css["about-item"]}>
               <p className={css.name}>Birthday</p>
-              <span className={css.span}>{notice.birthday}</span>
+              <span className={css.span}>
+                {notice.birthday ? notice.birthday : "Unknown"}
+              </span>
             </li>
             <li className={css["about-item"]}>
               <p className={css.name}>Sex</p>
@@ -79,7 +73,7 @@ const NoticesItem = ({ notice, setModalOpen }) => {
             <button
               type="button"
               className={css["learn-more-btn"]}
-              onClick={handleOpenModal}
+              onClick={() => handleOpenModal(notice._id)}
             >
               Learn more
             </button>
@@ -87,7 +81,7 @@ const NoticesItem = ({ notice, setModalOpen }) => {
             <button
               type="button"
               className={css["heart-btn"]}
-              onClick={handleOpenModal}
+              onClick={() => handleOpenModal(notice._id)}
             >
               <IoHeartOutline className={css["icon-heart"]} />
             </button>
