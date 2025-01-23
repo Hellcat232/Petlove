@@ -17,19 +17,25 @@ import friendsReducer from "./friends/slice";
 import noticesReducer from "./notices/slice";
 import citiesReducer from "./cities/slice";
 
-const persistConfig = {
+const authConfig = {
   key: "auth",
   storage,
   whitelist: ["token"],
 };
 
+const noticesConfig = {
+  key: "notices",
+  storage,
+  whitelist: ["favoriteList"],
+};
+
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(persistConfig, authReducer),
+    auth: persistReducer(authConfig, authReducer),
     news: newsReducer,
     friends: friendsReducer,
     cities: citiesReducer,
-    notices: noticesReducer,
+    notices: persistReducer(noticesConfig, noticesReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

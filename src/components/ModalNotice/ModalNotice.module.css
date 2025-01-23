@@ -60,11 +60,12 @@
     position: absolute;
     top: 10px;
     border-radius: 30px;
-    padding: 8px 10px;
+    padding: 8px 5px;
     width: 38px;
     height: 28px;
     background: #fff4df;
 
+    text-align: center;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 10px;
@@ -272,11 +273,12 @@
     position: absolute;
     top: 10px;
     border-radius: 30px;
-    padding: 8px 14px;
+    padding: 8px 5px;
     width: 48px;
     height: 32px;
     background: #fff4df;
 
+    text-align: center;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 12px;
@@ -319,7 +321,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2px;
+    gap: 5px;
   }
 
   .info-block {
@@ -401,6 +403,13 @@
     color: #fff;
   }
 
+  .add-btn:hover {
+    transition-duration: 300ms;
+    transition-delay: 100ms;
+    background: #f9ca6c;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
   .heart {
     width: 18px;
     height: 18px;
@@ -420,6 +429,13 @@
     letter-spacing: -0.03em;
     color: #f6b83d;
   }
+
+  .contact-btn:hover {
+    transition-duration: 300ms;
+    transition-delay: 100ms;
+    background: #ffe8be;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media (min-width: 768px) {
@@ -438,7 +454,6 @@
   }
 
   .cloud {
-    padding: 8px 14px;
     width: 52px;
     height: 34px;
 

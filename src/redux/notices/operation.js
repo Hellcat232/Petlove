@@ -94,7 +94,7 @@ export const noticesFavoriteAddById = createAsyncThunk(
     const { auth } = thunkAPI.getState();
 
     try {
-      const res = await axios.post(`/notices/favorites/add/${id}`, _, {
+      const res = await axios.post(`/notices/favorites/add/${id}`, id, {
         headers: { Authorization: `Bearer ${auth.token}` },
       });
       console.log(res);

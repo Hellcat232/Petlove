@@ -13,8 +13,9 @@ import {
 const items = {
   pages: { page: null, perPage: null, totalPages: null },
   pagination: {},
-  results: [],
   noticeById: {},
+  favoriteList: [],
+  results: [],
   categories: [],
   sex: [],
   species: [],
@@ -108,9 +109,21 @@ const noticesSlice = createSlice({
         state.loading = false;
         state.noticeById = {};
       })
-      .addCase(noticesFavoriteAddById.pending, (state, action) => {})
-      .addCase(noticesFavoriteAddById.fulfilled, (state, action) => {})
-      .addCase(noticesFavoriteAddById.rejected, (state, action) => {})
+      .addCase(noticesFavoriteAddById.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(noticesFavoriteAddById.fulfilled, (state, action) => {
+        console.log(action);
+
+        state.favoriteList = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(noticesFavoriteAddById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
       .addCase(noticesFavoriteRemoveById.pending, (state, action) => {})
       .addCase(noticesFavoriteRemoveById.fulfilled, (state, action) => {})
       .addCase(noticesFavoriteRemoveById.rejected, (state, action) => {});

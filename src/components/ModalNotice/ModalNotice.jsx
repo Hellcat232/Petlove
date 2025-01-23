@@ -3,12 +3,19 @@ import Modal from "react-modal";
 import { IoClose } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { IoHeartOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import calculatePupularity from "../../utils/calculatePupularity";
 
 import { selectNoticeById } from "../../redux/notices/selectors";
+import { noticesFavoriteAddById } from "../../redux/notices/operation";
 
 const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
   const noticeById = useSelector(selectNoticeById);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (id) => {
+    // dispatch(noticesFavoriteAddById(id));
+  };
 
   if (!noticeById) return null;
 
@@ -20,6 +27,31 @@ const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
 
   function closeModal() {
     setModalOpen(false);
+  }
+
+  const renderStars = (rating, totalStars = 5) => {
+    return Array.from({ length: totalStars }, (_, index) => {
+      return (
+        <FaStar
+          key={index}
+          style={{
+            width: "16px",
+            height: "16px",
+            color: index < rating ? "gold" : "lightgray",
+          }}
+        />
+      );
+    });
+  };
+
+  function correctPopularity(value) {
+    let calculate = calculatePupularity(value);
+    if (calculate > 5) {
+      calculate = 5;
+      return calculate;
+    }
+
+    return calculate;
   }
 
   return (
@@ -52,8 +84,10 @@ const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
         <div className={css["stars-number"]}>
           <h2 className={css.title}>{noticeById.title}</h2>
           <div className={css["score"]}>
-            <FaStar className={css.star} />
-            <p className={css.popularity}>{noticeById.popularity}</p>
+            {renderStars(calculatePupularity(noticeById.popularity), 5)}
+            <p className={css.popularity}>
+              {correctPopularity(noticeById.popularity)}
+            </p>
           </div>
         </div>
       </div>
@@ -92,7 +126,11 @@ const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
       </p>
 
       <div className={css["btns-block"]}>
-        <button className={css["add-btn"]}>
+        <button
+          className={css["add-btn"]}
+          type="button"
+          onClick={() => handleSubmit(noticeById._id)}
+        >
           Add to{" "}
           <span>
             <IoHeartOutline className={css.heart} />
