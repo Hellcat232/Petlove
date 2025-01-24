@@ -30,7 +30,7 @@ export const currentUser = createAsyncThunk(
   "user/current",
   async (_, thunkAPI) => {
     const { auth } = thunkAPI.getState();
-    console.log(auth);
+    // console.log(auth);
 
     try {
       const res = await axios.get("/users/current", {
@@ -66,10 +66,14 @@ export const editUsers = createAsyncThunk(
   "user/edit",
   async (data, thunkAPI) => {
     const { auth } = thunkAPI.getState();
+    console.log(data, "from editUser");
 
     try {
       const res = await axios.patch("/users/current/edit", data, {
-        headers: { Authorization: `Bearer ${auth.token}` },
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+          "Content-Type": "multipart/form-data",
+        },
       });
       console.log(res);
 

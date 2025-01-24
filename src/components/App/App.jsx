@@ -1,6 +1,7 @@
-import "./App.css";
-import { lazy, Suspense } from "react";
+import css from "./App.module.css";
+import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Layout from "../Layout/Layout";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
@@ -19,11 +20,14 @@ const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
 
-// import Modal from "react-modal";
-
-// Modal.setAppElement("#root");
+import { currentUser } from "../../redux/auth/operations";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(currentUser());
+  });
+
   return (
     <>
       <Suspense fallback={null}>

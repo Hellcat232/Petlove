@@ -1,0 +1,25 @@
+@media (max-width: 374px) {
+  .profile-section {
+  }
+}
+
+@media (min-width: 375px) {
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 18px 20px 56px 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .profile-section {
+    margin: 32px 32px 60px 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .profile-section {
+    margin: 32px 32px 32px 32px;
+  }
+}

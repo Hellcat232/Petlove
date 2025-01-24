@@ -124,9 +124,26 @@ const noticesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(noticesFavoriteRemoveById.pending, (state, action) => {})
-      .addCase(noticesFavoriteRemoveById.fulfilled, (state, action) => {})
-      .addCase(noticesFavoriteRemoveById.rejected, (state, action) => {});
+      .addCase(noticesFavoriteRemoveById.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(noticesFavoriteRemoveById.fulfilled, (state, action) => {
+        console.log(action);
+
+        // state.favoriteList = state.favoriteList.filter(
+        //   (_id) => _id !== action.payload
+        // );
+
+        // Для проверки, какие элементы проходят фильтрацию
+        state.favoriteList.forEach((_id) => console.log(_id, "from slice"));
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(noticesFavoriteRemoveById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 

@@ -1,7 +1,7 @@
 import css from "./NoticesList.module.css";
 import NoticesItem from "../NoticesItem/NoticesItem";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { selectNotices } from "../../redux/notices/selectors";
 import ModalAttention from "../ModalAttention/ModalAttention";
@@ -9,9 +9,12 @@ import ModalNotice from "../ModalNotice/ModalNotice";
 
 import { noticesById } from "../../redux/notices/operation";
 
+import { selectAuthIsUser } from "../../redux/auth/selectors";
+
 const NoticesList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isUser = useSelector(selectAuthIsUser);
   const isNoticesItem = useSelector(selectNotices);
   const [selectedNoticeId, setSelectedNoticeId] = useState(null);
   const [isModalNoticeOpen, setModalNoticeOpen] = useState(false);

@@ -14,7 +14,7 @@ const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (id) => {
-    // dispatch(noticesFavoriteAddById(id));
+    dispatch(noticesFavoriteAddById(id));
   };
 
   if (!noticeById) return null;

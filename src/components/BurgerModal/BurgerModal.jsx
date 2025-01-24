@@ -2,7 +2,7 @@ import css from "./BurgerModal.module.css";
 import { IoClose } from "react-icons/io5";
 import AuthNav from "../AuthNav/AuthNav";
 import Nav from "../Nav/Nav";
-import LogOutBtn from "../LogOutBtn/LogOut";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
 import Modal from "react-modal";
 
 const BurgerModal = ({ modalIsOpen, setIsOpen, isTablet, isLogged }) => {

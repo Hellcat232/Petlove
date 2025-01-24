@@ -1,7 +1,7 @@
 import css from "./UserNav.module.css";
 
 import UserBar from "../UserBar/UserBar";
-import LogOutBtn from "../LogOutBtn/LogOut";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
 
 const UserNav = () => {
   return (

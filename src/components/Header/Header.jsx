@@ -10,7 +10,7 @@ import { useMatch } from "react-router-dom";
 
 const Header = () => {
   const matchHome = useMatch("/home");
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery({ minWidth: 320 });
   const isTablet = useMediaQuery({ minWidth: 768 });

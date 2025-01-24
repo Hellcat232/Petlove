@@ -1,0 +1,17 @@
+@media (max-width: 374px) {
+}
+
+@media (min-width: 375px) {
+  .card {
+    border: 1px solid rgba(38, 38, 38, 0.1);
+    border-radius: 20px;
+    width: 295px;
+    height: 132px;
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1280px) {
+}

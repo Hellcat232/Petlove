@@ -150,6 +150,23 @@
     color: #f6b83d;
   }
 
+  .bin-btn {
+    border-radius: 30px;
+    padding: 14px;
+    width: 46px;
+    height: 46px;
+    background: #fff4df;
+  }
+
+  .bin-btn:hover {
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-bin {
+    color: #f6b83d;
+  }
+
   .star {
     width: 14px;
     height: 14px;
@@ -309,6 +326,23 @@
     color: #f6b83d;
   }
 
+  .bin-btn {
+    border-radius: 30px;
+    padding: 14px;
+    width: 46px;
+    height: 46px;
+    background: #fff4df;
+  }
+
+  .bin-btn:hover {
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-bin {
+    color: #f6b83d;
+  }
+
   .star {
     width: 16px;
     height: 16px;
@@ -377,6 +411,12 @@
   }
 
   .heart-btn {
+    padding: 15px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .bin-btn {
     padding: 15px;
     width: 48px;
     height: 48px;
