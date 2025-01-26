@@ -57,6 +57,23 @@
 }
 
 @media (min-width: 768px) {
+  .pets-block {
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .add-pet-btn {
+    padding: 10px 20px;
+    width: 118px;
+    height: 40px;
+
+    font-size: 16px;
+    line-height: 125%;
+  }
 }
 
 @media (min-width: 1280px) {

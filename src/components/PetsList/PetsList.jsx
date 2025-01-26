@@ -10,6 +10,8 @@ const PetsList = () => {
     <ul className={css["user-pets-list"]}>
       <PetsItem />
       <PetsItem />
+      <PetsItem />
+      {/* <PetsItem /> */}
     </ul>
   );
 };

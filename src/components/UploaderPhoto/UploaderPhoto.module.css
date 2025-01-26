@@ -1,0 +1,64 @@
+@media (max-width: 374px) {
+}
+
+@media (min-width: 375px) {
+  .upload-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    padding: 10px;
+    width: 94px;
+    height: 94px;
+    background: #fff4df;
+  }
+
+  .upload-icon {
+    width: 40px;
+    height: 40px;
+    fill: #f6b83d;
+  }
+
+  .upload-input {
+    display: none;
+  }
+
+  .upload {
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+    letter-spacing: -0.02em;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #262626;
+  }
+}
+
+@media (min-width: 768px) {
+  .upload-btn {
+    width: 110px;
+    height: 110px;
+  }
+
+  .upload-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .upload {
+    font-size: 14px;
+    line-height: 129%;
+  }
+}
+
+@media (min-width: 1280px) {
+}

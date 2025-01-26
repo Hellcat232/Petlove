@@ -1,6 +1,7 @@
 import css from "./UserBlock.module.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import {
   selectAuthIsUser,
   selectAuthNoticesFavorites,
@@ -8,7 +9,10 @@ import {
   selectAuthPets,
 } from "../../redux/auth/selectors";
 
+import UploaderPhoto from "../UploaderPhoto/UploaderPhoto";
+
 const UserBlock = ({ handleEditUser }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const isUser = useSelector(selectAuthIsUser);
   if (!isUser) return null;
 
@@ -24,29 +28,7 @@ const UserBlock = ({ handleEditUser }) => {
 
   return (
     <div className={css["user-block"]}>
-      <div className={css["upload-block"]}>
-        {isUser.avatar ? (
-          <img src={isUser?.avatar} alt="avatar" />
-        ) : (
-          <button disabled className={css["upload-btn"]}>
-            <svg className={css["upload-icon"]}>
-              <use href="/icons/symbol-defs.svg#icon-person-icon"></use>
-            </svg>
-          </button>
-        )}
-        <label>
-          <input
-            type="file"
-            name="photo"
-            accept="image/*"
-            // onChange={handleFileChange}
-            className={css["upload-input"]}
-          />
-          <div>
-            <p className={css.upload}>Upload a photo</p>
-          </div>
-        </label>
-      </div>
+      {isMobile && <UploaderPhoto />}
 
       <div className={css["info-block"]}>
         <h2 className={css["info-title"]}>My information</h2>

@@ -9,7 +9,7 @@
     gap: 28px;
   }
 
-  .upload-block {
+  /* .upload-block {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,7 +47,7 @@
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: #262626;
-  }
+  } */
 
   .info-block {
     display: flex;
@@ -88,6 +88,30 @@
 }
 
 @media (min-width: 768px) {
+  .info-block {
+  }
+
+  .info-title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .info-inputs-block {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .info-input {
+    padding: 16px 16px 16px 16px;
+    width: 305px;
+    height: 52px;
+  }
+
+  .info-input::placeholder {
+    font-size: 16px;
+    line-height: 125%;
+  }
 }
 
 @media (min-width: 1280px) {
