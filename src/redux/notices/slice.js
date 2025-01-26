@@ -114,7 +114,7 @@ const noticesSlice = createSlice({
         state.error = null;
       })
       .addCase(noticesFavoriteAddById.fulfilled, (state, action) => {
-        console.log(action);
+        // console.log(action);
 
         state.favoriteList = action.payload;
         state.loading = false;
@@ -129,14 +129,9 @@ const noticesSlice = createSlice({
         state.error = null;
       })
       .addCase(noticesFavoriteRemoveById.fulfilled, (state, action) => {
-        console.log(action);
-
-        // state.favoriteList = state.favoriteList.filter(
-        //   (_id) => _id !== action.payload
-        // );
-
-        // Для проверки, какие элементы проходят фильтрацию
-        state.favoriteList.forEach((_id) => console.log(_id, "from slice"));
+        state.favoriteList = state.favoriteList.filter(
+          (favorite) => favorite !== action.meta.arg
+        );
         state.loading = false;
         state.error = null;
       })

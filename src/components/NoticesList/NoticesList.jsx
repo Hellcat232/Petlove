@@ -3,19 +3,26 @@ import NoticesItem from "../NoticesItem/NoticesItem";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { selectNotices } from "../../redux/notices/selectors";
 import ModalAttention from "../ModalAttention/ModalAttention";
 import ModalNotice from "../ModalNotice/ModalNotice";
 
-import { noticesById } from "../../redux/notices/operation";
+import {
+  noticesById,
+  noticesFavoriteRemoveById,
+} from "../../redux/notices/operation";
 
 import { selectAuthIsUser } from "../../redux/auth/selectors";
+import { selectNoticesFavoriteList } from "../../redux/notices/selectors";
 
-const NoticesList = () => {
+const NoticesList = ({
+  selector,
+  viewedTab /*handleRemoveFavorite, added, setAdded*/,
+}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isUser = useSelector(selectAuthIsUser);
-  const isNoticesItem = useSelector(selectNotices);
+  const favoriteList = useSelector(selectNoticesFavoriteList);
+  const [addedItems, setAddedItems] = useState({});
   const [selectedNoticeId, setSelectedNoticeId] = useState(null);
   const [isModalNoticeOpen, setModalNoticeOpen] = useState(false);
   const [isModalAttentionOpen, setModalAttentionOpen] = useState(false);
@@ -34,15 +41,36 @@ const NoticesList = () => {
     }
   }
 
+  useEffect(() => {
+    const addedMap = selector.reduce((acc, notice) => {
+      acc[notice._id] = favoriteList.includes(notice._id);
+      return acc;
+    }, {});
+    setAddedItems(addedMap);
+  }, [favoriteList, selector]);
+
+  function handleRemoveFavoriteNoticePage(id) {
+    dispatch(noticesFavoriteRemoveById(id));
+    setAddedItems(false);
+  }
+
   return (
     <ul className={css["notice-list"]}>
-      {isNoticesItem !== null &&
-        isNoticesItem.map((notice) => {
+      {selector !== null &&
+        selector.map((notice) => {
           return (
             <NoticesItem
               key={notice._id}
               notice={notice}
               handleOpenModal={handleOpenModal}
+              handleRemoveFavorite={handleRemoveFavoriteNoticePage}
+              // handleRemoveFavorite={handleRemoveFavorite}
+              isLogged={isLogged}
+              added={addedItems[notice._id]}
+              setAdded={(value) =>
+                setAddedItems((prev) => ({ ...prev, [notice._id]: value }))
+              }
+              viewedTab={viewedTab}
             />
           );
         })}
@@ -54,6 +82,16 @@ const NoticesList = () => {
           modalIsOpen={isModalNoticeOpen}
           setModalOpen={setModalNoticeOpen}
           id={selectedNoticeId}
+          // handleRemoveFavorite={handleRemoveFavorite}
+          handleRemoveFavorite={handleRemoveFavoriteNoticePage}
+          added={addedItems[selectedNoticeId]}
+          setAdded={(value) =>
+            setAddedItems((prev) => ({
+              ...prev,
+              [selectedNoticeId]: value,
+            }))
+          }
+          viewedTab={viewedTab}
         />
       )}
 

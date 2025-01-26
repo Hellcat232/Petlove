@@ -3,15 +3,26 @@ import Modal from "react-modal";
 import { IoClose } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { IoHeartOutline } from "react-icons/io5";
+import { IoIosHeart } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
+import { useMatch } from "react-router-dom";
 import calculatePupularity from "../../utils/calculatePupularity";
 
 import { selectNoticeById } from "../../redux/notices/selectors";
 import { noticesFavoriteAddById } from "../../redux/notices/operation";
 
-const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
+const ModalNotice = ({
+  modalIsOpen,
+  setModalOpen,
+  id,
+  handleRemoveFavorite,
+  added,
+  setAdded,
+  viewedTab,
+}) => {
   const noticeById = useSelector(selectNoticeById);
   const dispatch = useDispatch();
+  const matchProfile = useMatch("/profile");
 
   const handleSubmit = (id) => {
     dispatch(noticesFavoriteAddById(id));
@@ -126,16 +137,53 @@ const ModalNotice = ({ modalIsOpen, setModalOpen, id }) => {
       </p>
 
       <div className={css["btns-block"]}>
-        <button
-          className={css["add-btn"]}
-          type="button"
-          onClick={() => handleSubmit(noticeById._id)}
-        >
-          Add to{" "}
-          <span>
-            <IoHeartOutline className={css.heart} />
-          </span>
-        </button>
+        {!matchProfile ? (
+          added && !viewedTab ? (
+            <button
+              className={css["remove-btn"]}
+              type="button"
+              onClick={() => handleRemoveFavorite(noticeById._id)}
+            >
+              Remove from{" "}
+              <span>
+                <IoIosHeart className={css.heart} />
+              </span>
+            </button>
+          ) : (
+            <button
+              className={css["add-btn"]}
+              type="button"
+              onClick={() => handleSubmit(noticeById._id)}
+            >
+              Add to{" "}
+              <span>
+                <IoHeartOutline className={css.heart} />
+              </span>
+            </button>
+          )
+        ) : viewedTab ? (
+          <button
+            className={css["add-btn"]}
+            type="button"
+            onClick={() => handleSubmit(noticeById._id)}
+          >
+            Add to{" "}
+            <span>
+              <IoHeartOutline className={css.heart} />
+            </span>
+          </button>
+        ) : (
+          <button
+            className={css["remove-btn"]}
+            type="button"
+            onClick={() => handleRemoveFavorite(noticeById._id)}
+          >
+            Remove from{" "}
+            <span>
+              <IoIosHeart className={css.heart} />
+            </span>
+          </button>
+        )}
 
         <button className={css["contact-btn"]}>Contact</button>
       </div>

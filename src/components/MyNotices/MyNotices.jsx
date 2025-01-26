@@ -1,24 +1,36 @@
 import css from "./MyNotices.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import {
   selectAuthNoticesFavorites,
   selectAuthNoticesViewed,
 } from "../../redux/auth/selectors";
+import { noticesFavoriteRemoveById } from "../../redux/notices/operation";
 import NoticesItem from "../NoticesItem/NoticesItem";
+import NoticesList from "../NoticesList/NoticesList";
 
 const MyNotices = () => {
   const [activeTab, setActiveTab] = useState(false);
+  const [viewedTab, setViewedTab] = useState(true);
+  const dispatch = useDispatch();
   const favorites = useSelector(selectAuthNoticesFavorites);
   const viewed = useSelector(selectAuthNoticesViewed);
+  const [added, setAdded] = useState(false);
 
-  function renderTabs(selector) {
+  function handleRemoveFavoriteMyNotices(id) {
+    dispatch(noticesFavoriteRemoveById(id));
+    setAdded(false);
+  }
+
+  function renderTabs(selector, viewedTab) {
     return (
-      <ul className={css["notise-lists"]}>
-        {selector.map((data) => {
-          return <NoticesItem key={data._id} notice={data} />;
-        })}
-      </ul>
+      <NoticesList
+        selector={selector}
+        handleRemoveFavorite={handleRemoveFavoriteMyNotices}
+        setAdded={setAdded}
+        added={added}
+        viewedTab={viewedTab}
+      />
     );
   }
 
@@ -39,7 +51,7 @@ const MyNotices = () => {
         </button>
       </div>
 
-      {activeTab ? renderTabs(viewed) : renderTabs(favorites)}
+      {activeTab ? renderTabs(viewed, viewedTab) : renderTabs(favorites)}
     </div>
   );
 };

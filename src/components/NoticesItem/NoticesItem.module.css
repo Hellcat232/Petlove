@@ -133,6 +133,28 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
+  .learn-more-btn-viewed {
+    border-radius: 30px;
+    padding: 14px 50px;
+    width: 260px;
+    height: 46px;
+    background: #f6b83d;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 129%;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  .learn-more-btn-viewed:hover {
+    background: #f9ca6c;
+    color: #fff;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
   .heart-btn {
     border-radius: 30px;
     padding: 14px;
@@ -303,6 +325,28 @@
   }
 
   .learn-more-btn:hover {
+    background: #f9ca6c;
+    color: #fff;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .learn-more-btn-viewed {
+    border-radius: 30px;
+    padding: 14px 50px;
+    width: 287px;
+    height: 46px;
+    background: #f6b83d;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 129%;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  .learn-more-btn-viewed:hover {
     background: #f9ca6c;
     color: #fff;
     transition: all 0.4s ease;

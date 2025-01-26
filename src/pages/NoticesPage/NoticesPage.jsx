@@ -5,8 +5,12 @@ import NoticesList from "../../components/NoticesList/NoticesList";
 import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
 import defaultState from "../../utils/defaultStateForFilter";
 
-import { notices } from "../../redux/notices/operation";
 import {
+  notices,
+  noticesFavoriteRemoveById,
+} from "../../redux/notices/operation";
+import {
+  selectNotices,
   selectNoticesPagination,
   selectNoticesPage,
   selectNoticesPerPage,
@@ -20,12 +24,14 @@ import { useEffect, useState } from "react";
 export default function NoticesPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectNoticesLoading);
+  const isNoticesItem = useSelector(selectNotices);
   const page = useSelector(selectNoticesPage);
   const perPage = useSelector(selectNoticesPerPage);
   const totalPages = useSelector(selectNoticesTotalPages);
   const pagination = useSelector(selectNoticesPagination);
   const [formData, setFormData] = useState(defaultState);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [added, setAdded] = useState(false);
 
   // console.log(formData, "formData");
 
@@ -66,6 +72,11 @@ export default function NoticesPage() {
     setFormData(defaultState);
   }
 
+  // function handleRemoveFavoriteNoticePage(id) {
+  //   dispatch(noticesFavoriteRemoveById(id));
+  //   setAdded(false);
+  // }
+
   return (
     <section className={css["find-pet-section"]}>
       <Title>Find your favorite pet</Title>
@@ -80,7 +91,12 @@ export default function NoticesPage() {
         setIsMenuOpen={setIsMenuOpen}
       />
 
-      <NoticesList />
+      <NoticesList
+        selector={isNoticesItem}
+        // handleRemoveFavorite={handleRemoveFavoriteNoticePage}
+        // added={added}
+        // setAdded={setAdded}
+      />
 
       {totalPages > 1 ? (
         <Pagination
