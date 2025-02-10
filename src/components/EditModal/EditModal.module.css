@@ -1,0 +1,138 @@
+@media (max-width: 374px) {
+  .close {
+    fill: #262626;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    fill: #f6b83d;
+    transition-duration: 300ms;
+    transition-delay: 100ms;
+  }
+
+  .edit-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(50, 48, 48, 0.75);
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-modal-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 40px 20px;
+    border-radius: 30px;
+    width: 280px;
+    /* height: 360px; */
+    background: #fff;
+  }
+}
+
+@media (min-width: 375px) {
+  .close {
+    fill: #262626;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 124px;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    fill: #f6b83d;
+    transition-duration: 300ms;
+    transition-delay: 100ms;
+  }
+
+  .edit-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(50, 48, 48, 0.75);
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-modal-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 40px 20px;
+    border-radius: 30px;
+    width: 335px;
+    /* height: 360px; */
+    background: #fff;
+  }
+
+  .upload-icon {
+    width: 40px;
+    height: 40px;
+    fill: #f6b83d;
+  }
+
+  .upload-input {
+    border: 1px solid #f6b83d;
+    border-radius: 30px;
+    padding: 13px 39px 13px 12px;
+    width: 161px;
+    height: 42px;
+  }
+
+  .upload-btn {
+    border-radius: 30px;
+    padding: 12px;
+    width: 126px;
+    height: 42px;
+    background: #fff4df;
+  }
+
+  .info-inputs-block {
+  }
+
+  .info-input {
+    border: 1px solid #f6b83d;
+    border-radius: 30px;
+    padding: 12px 12px 12px 12px;
+    width: 295px;
+    height: 42px;
+  }
+
+  .info-input::placeholder {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.03em;
+    color: #262626;
+  }
+}
+
+@media (min-width: 768px) {
+  .close {
+    left: 186px;
+  }
+}
+
+@media (min-width: 1280px) {
+}

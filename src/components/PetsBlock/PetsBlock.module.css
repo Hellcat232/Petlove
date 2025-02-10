@@ -77,4 +77,7 @@
 }
 
 @media (min-width: 1280px) {
+  .pets-block {
+    width: 440px;
+  }
 }

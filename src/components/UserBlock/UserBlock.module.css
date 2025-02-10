@@ -115,4 +115,11 @@
 }
 
 @media (min-width: 1280px) {
+  .user-block {
+    width: 440px;
+  }
+
+  .info-input {
+    width: 440px;
+  }
 }

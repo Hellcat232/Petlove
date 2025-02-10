@@ -65,4 +65,12 @@
 }
 
 @media (min-width: 1280px) {
+  .card {
+    width: 520px;
+    height: fit-content;
+  }
+
+  .user-pets-blocks {
+    align-items: center;
+  }
 }

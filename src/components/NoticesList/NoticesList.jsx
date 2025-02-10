@@ -2,7 +2,8 @@ import css from "./NoticesList.module.css";
 import NoticesItem from "../NoticesItem/NoticesItem";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useMatch } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import ModalAttention from "../ModalAttention/ModalAttention";
 import ModalNotice from "../ModalNotice/ModalNotice";
 
@@ -26,6 +27,8 @@ const NoticesList = ({
   const [selectedNoticeId, setSelectedNoticeId] = useState(null);
   const [isModalNoticeOpen, setModalNoticeOpen] = useState(false);
   const [isModalAttentionOpen, setModalAttentionOpen] = useState(false);
+  const isProfilePage = useMatch("/profile");
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   const [isLogged, setIsLogged] = useState(true); /* TEMPORARY STATE FOR TEST */
 
@@ -55,7 +58,13 @@ const NoticesList = ({
   }
 
   return (
-    <ul className={css["notice-list"]}>
+    <ul
+      className={
+        isDesktop && isProfilePage
+          ? css["notice-list-profile-desktop"]
+          : css["notice-list"]
+      }
+    >
       {selector !== null &&
         selector.map((notice) => {
           return (

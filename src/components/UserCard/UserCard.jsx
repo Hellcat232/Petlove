@@ -1,5 +1,6 @@
 import css from "./UserCard.module.css";
 import EditUserBtn from "../EditUserBtn/EditUserBtn";
+import EditModal from "../EditModal/EditModal";
 import UserBlock from "../UserBlock/UserBlock";
 import PetsBlock from "../PetsBlock/PetsBlock";
 import LogOutBtn from "../LogOutBtn/LogOutBtn";
@@ -7,12 +8,14 @@ import UploaderPhoto from "../UploaderPhoto/UploaderPhoto";
 
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
 
 import { editUsers } from "../../redux/auth/operations";
 
 const UserCard = () => {
   const dispatch = useDispatch();
   const isTablet = useMediaQuery({ minWidth: 768 });
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function handleEditUser(data) {
     dispatch(editUsers(data));
@@ -28,7 +31,10 @@ const UserCard = () => {
           </svg>
         </div>
         {isTablet && <UploaderPhoto />}
-        <EditUserBtn handleEditUser={handleEditUser} />
+        <EditUserBtn
+          handleEditUser={handleEditUser}
+          setModalIsOpen={setModalIsOpen}
+        />
       </div>
 
       <div className={css["user-pets-blocks"]}>
@@ -36,6 +42,8 @@ const UserCard = () => {
         <PetsBlock />
       </div>
       <LogOutBtn />
+
+      <EditModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
     </div>
   );
 };

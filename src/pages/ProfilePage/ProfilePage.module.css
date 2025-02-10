@@ -21,5 +21,7 @@
 @media (min-width: 1280px) {
   .profile-section {
     margin: 32px 32px 32px 32px;
+    flex-direction: row;
+    gap: 32px;
   }
 }

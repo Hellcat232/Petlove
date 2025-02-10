@@ -2,6 +2,7 @@ import css from "./NoticesItem.module.css";
 import { useMatch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import { IoHeartOutline } from "react-icons/io5";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FaStar } from "react-icons/fa";
@@ -19,6 +20,7 @@ const NoticesItem = ({
   viewedTab,
 }) => {
   const matchProfile = useMatch("/profile");
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
   const dispatch = useDispatch();
 
   function handleAddToFavorite(id) {
@@ -31,7 +33,11 @@ const NoticesItem = ({
   }
 
   return (
-    <li className={css.card}>
+    <li
+      className={
+        matchProfile && isDesktop ? css["card-profile-desktop"] : css.card
+      }
+    >
       <img
         src={notice.imgURL}
         alt="notice image"
